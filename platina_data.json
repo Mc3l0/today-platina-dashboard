@@ -1,5 +1,5 @@
 {
-  "gerado_em": "12/06/2026 11:41",
+  "gerado_em": "12/06/2026 11:56",
   "totais": {
     "atend": 340,
     "qv": 99,
@@ -254,15 +254,15 @@
   ],
   "pastas": {
     "sfh": {
-      "total": 30,
-      "aprov": 26,
+      "total": 33,
+      "aprov": 29,
       "pend": 4,
-      "pct_aprov": 86.7
+      "pct_aprov": 87.9
     },
     "assoc": {
-      "total": 54,
+      "total": 55,
       "pend": 29,
-      "sicaq": 25
+      "sicaq": 26
     },
     "linhas": [
       {
@@ -279,11 +279,11 @@
         "super": "JAMIL",
         "sfh_pend": 0,
         "sfh_aprov": 0,
-        "assoc_pend": 2,
+        "assoc_pend": 3,
         "assoc_analise": 0,
         "assoc_sicaq": 3,
         "sfh_total": 0,
-        "assoc_total": 5
+        "assoc_total": 6
       },
       {
         "super": "NELMA",
@@ -298,11 +298,11 @@
       {
         "super": "RICARDO",
         "sfh_pend": 4,
-        "sfh_aprov": 7,
-        "assoc_pend": 7,
+        "sfh_aprov": 10,
+        "assoc_pend": 6,
         "assoc_analise": 0,
-        "assoc_sicaq": 4,
-        "sfh_total": 11,
+        "assoc_sicaq": 5,
+        "sfh_total": 14,
         "assoc_total": 11
       },
       {
@@ -319,21 +319,21 @@
         "super": "RODRIGO",
         "sfh_pend": 0,
         "sfh_aprov": 10,
-        "assoc_pend": 1,
+        "assoc_pend": 2,
         "assoc_analise": 0,
         "assoc_sicaq": 0,
         "sfh_total": 10,
-        "assoc_total": 1
+        "assoc_total": 2
       },
       {
         "super": "MEDI",
         "sfh_pend": 0,
         "sfh_aprov": 0,
-        "assoc_pend": 2,
+        "assoc_pend": 1,
         "assoc_analise": 0,
         "assoc_sicaq": 1,
         "sfh_total": 0,
-        "assoc_total": 3
+        "assoc_total": 2
       },
       {
         "super": "UP HOUSE",

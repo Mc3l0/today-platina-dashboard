@@ -1,13 +1,13 @@
 {
-  "gerado_em": "12/06/2026 11:35",
+  "gerado_em": "12/06/2026 11:41",
   "totais": {
     "atend": 340,
     "qv": 99,
     "taxa_qv": 29.1,
     "analisando": 64,
     "pesquisa": 114,
-    "sem_interesse": 0,
-    "sem_registro": 0
+    "sem_interesse": 60,
+    "sem_registro": 3
   },
   "equipes": [
     {

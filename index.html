@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Today Platina · Dashboard</title>
 <style>
+
 /* ── TOKENS ─────────────────────────────────────────────────────────────── */
 :root {
   --navy:      #0D1B3E;
@@ -314,7 +315,6 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         <div class="header-eyebrow">Canopus · Today Platina</div>
         <div class="header-title">Dashboard de Qualificação</div>
       </div>
-      <div class="header-meta" id="header-meta">—</div>
     </div>
     <nav class="header-nav">
       <button class="nav-btn active" onclick="goSlide(0,this)">Visão Geral</button>
@@ -339,7 +339,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 
     <div style="margin-top:32px">
       <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
-        <div class="section-title" style="margin-bottom:0">Fechamento do Dia</div>
+        <div class="section-title" style="margin-bottom:0;font-size:14px;color:var(--navy)">📋 Fechamento do Dia</div>
         <div id="s0-fechamento-data" style="font-size:12px;color:var(--slate-l)">—</div>
       </div>
       <div style="background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)">
@@ -481,13 +481,11 @@ function loadData() {
   fetch(JSON_URL + '?t=' + Date.now())
     .then(r => r.json())
     .then(d => {
-      document.getElementById('header-meta').textContent = 'Atualizado ' + d.gerado_em;
       document.getElementById('footer-bar').textContent =
         'Today Platina · Canopus Construtora · Atualizado ' + d.gerado_em + ' · CONFIDENCIAL';
       renderAll(d);
     })
     .catch(() => {
-      document.getElementById('header-meta').textContent = 'Erro ao carregar dados';
     });
 }
 
@@ -836,10 +834,7 @@ function renderS6(d) {
       emoji: '🤝', canais: ['VIZINHO','VIZINHA','CARTEIRA','INDICAÇÃO AMIGO','CAMPO','TELEFONE'],
       color: '#7C3AED', badge: 'ALTA EFICIÊNCIA'
     },
-    'CAMPO (PASSAGEM)': {
-      emoji: '📍', canais: ['CAMPO'],
-      color: '#EA580C', badge: 'BAIXO VOLUME'
-    },
+
   };
 
   // Status por canal
@@ -1010,8 +1005,8 @@ function renderS7(d) {
       <div class="pasta-kpis">
         <div class="pk"><div class="pk-val">${assoc.total||0}</div><div class="pk-lbl">Total</div></div>
         <div class="pk"><div class="pk-val" style="color:var(--red)">${assoc.pend||0}</div><div class="pk-lbl">Pendentes</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--slate-l)">${(d.pastas.linhas||[]).reduce((s,l)=>s+(l.assoc_analise||0),0)}</div><div class="pk-lbl">Em Análise</div></div>
         <div class="pk"><div class="pk-val" style="color:var(--green)">${assoc.sicaq||0}</div><div class="pk-lbl">SICAQ Aprov.</div></div>
-        <div class="pk"><div class="pk-val" style="color:var(--slate-l)">0</div><div class="pk-lbl">Em Análise</div></div>
       </div>
       <table class="pasta-table">
         <thead><tr><th>Equipe</th><th>Pendente</th><th>Análise</th><th>SICAQ</th><th>Total</th></tr></thead>
@@ -1025,7 +1020,7 @@ function renderS7(d) {
           </tr>`).join('')}
           <tr><td>TOTAL</td>
             <td style="color:var(--red)">${assoc.pend||0}</td>
-            <td>0</td>
+            <td>${(d.pastas.linhas||[]).reduce((s,l)=>s+(l.assoc_analise||0),0)}</td>
             <td style="color:var(--green)">${assoc.sicaq||0}</td>
             <td>${assoc.total||0}</td>
           </tr>
@@ -1036,4 +1031,5 @@ function renderS7(d) {
 }
 </script>
 </body>
+</html>
 </html>

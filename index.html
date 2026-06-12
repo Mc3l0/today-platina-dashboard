@@ -278,6 +278,13 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 /* ── FOOTER ─────────────────────────────────────────────────────────────── */
 .footer { background: var(--navy); color: var(--slate-l); text-align: center;
           padding: 16px; font-size: 11px; margin-top: 40px; letter-spacing: .04em; }
+
+  @media (max-width: 768px) {
+    .midia-grupos > div { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 400px) {
+    .midia-grupos > div { grid-template-columns: 1fr !important; }
+  }
 </style>
 </head>
 <body>
@@ -312,7 +319,8 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       <button class="nav-btn" onclick="goSlide(3,this)">Tipo de Visita</button>
       <button class="nav-btn" onclick="goSlide(4,this)">Ranking QV</button>
       <button class="nav-btn" onclick="goSlide(5,this)">Semanal</button>
-      <button class="nav-btn" onclick="goSlide(6,this)">Pastas</button>
+      <button class="nav-btn" onclick="goSlide(6,this)">Mídia</button>
+      <button class="nav-btn" onclick="goSlide(7,this)">Pastas</button>
     </nav>
   </header>
 
@@ -409,14 +417,31 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     </div>
   </section>
 
-  <!-- S6: PASTAS -->
+
+  <!-- S6: MÍDIA -->
   <section class="slide" id="s6">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Mídia de Origem · Análise de Canal</div>
+      <div class="slide-title">De onde vêm os clientes que qualificam?</div>
+      <div class="slide-sub">Classificação da mídia de origem × taxa QV — acumulado mai–jun/2026</div>
+    </div>
+    <div class="midia-grupos" id="s6-grupos"></div>
+    <div style="margin-top:28px">
+      <div class="section-title">Detalhe por Canal de Mídia</div>
+      <div style="background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+        <div id="s6-tabela"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: PASTAS -->
+  <section class="slide" id="s7">
     <div class="slide-hdr">
       <div class="slide-eyebrow">Qualificação · Status de Pastas</div>
       <div class="slide-title">Pastas por Modalidade de Financiamento</div>
-      <div class="slide-sub" id="s6-sub">—</div>
+      <div class="slide-sub" id="s7-sub">—</div>
     </div>
-    <div class="pastas-grid" id="s6-pastas"></div>
+    <div class="pastas-grid" id="s7-pastas"></div>
   </section>
 
   <footer class="footer" id="footer-bar">Today Platina · Canopus Construtora · CONFIDENCIAL</footer>
@@ -500,6 +525,7 @@ function renderAll(d) {
   renderS4(d);
   renderS5(d);
   renderS6(d);
+  renderS7(d);
 }
 
 // ── S0: CAPA ─────────────────────────────────────────────────────────────────
@@ -786,17 +812,140 @@ function renderS5(d) {
   }).join('');
 }
 
-// ── S6: PASTAS ────────────────────────────────────────────────────────────────
+
+// ── S6: MÍDIA ─────────────────────────────────────────────────────────────────
 function renderS6(d) {
+  const orig = d.origem || [];
+  if (!orig.length) return;
+
+  // ── Classificação por grupo ──────────────────────────────────────────────
+  const GRUPOS = {
+    'DIGITAL': {
+      emoji: '💻', canais: ['WHATSAPP','INSTAGRAM','SITE CANOPUS','GOOGLE','FACEBOOK','ONLINE','INTERNET','SDR'],
+      color: '#0D9488', badge: '★ MELHOR QV%'
+    },
+    'OOH/IMPRESSO': {
+      emoji: '🪧', canais: ['FOLHETO','BIRUTA','PAINEL LED','BANNER','FAIXA','JORNAL'],
+      color: '#5B8DEF', badge: 'MAIOR VOLUME'
+    },
+    'ORGÂNICO/INDICAÇÃO': {
+      emoji: '🤝', canais: ['VIZINHO','VIZINHA','CARTEIRA','INDICAÇÃO AMIGO','CAMPO','TELEFONE'],
+      color: '#7C3AED', badge: 'ALTA EFICIÊNCIA'
+    },
+    'CAMPO (PASSAGEM)': {
+      emoji: '📍', canais: ['CAMPO'],
+      color: '#EA580C', badge: 'BAIXO VOLUME'
+    },
+  };
+
+  // Status por canal
+  const STATUS = {
+    'WHATSAPP':       { label:'DESTAQUE',    color:'#16A34A' },
+    'INSTAGRAM':      { label:'↑ ASCENSÃO',  color:'#16A34A' },
+    'SITE CANOPUS':   { label:'ÓTIMO',       color:'#0D9488' },
+    'GOOGLE':         { label:'OK',          color:'#64748B' },
+    'FACEBOOK':       { label:'ATENÇÃO',     color:'#EA580C' },
+    'ONLINE':         { label:'OK',          color:'#64748B' },
+    'INTERNET':       { label:'OK',          color:'#64748B' },
+    'FOLHETO':        { label:'BOM',         color:'#5B8DEF' },
+    'BIRUTA':         { label:'OK',          color:'#64748B' },
+    'PAINEL LED':     { label:'ATENÇÃO',     color:'#EA580C' },
+    'VIZINHO':        { label:'EFICIENTE',   color:'#0D9488' },
+    'VIZINHA':        { label:'EFICIENTE',   color:'#0D9488' },
+    'CARTEIRA':       { label:'DESTAQUE',    color:'#16A34A' },
+    'INDICAÇÃO AMIGO':{ label:'BOM',         color:'#5B8DEF' },
+    'CAMPO':          { label:'OK',          color:'#64748B' },
+  };
+
+  // Monta índice de dados por canal
+  const byCanal = {};
+  orig.forEach(o => byCanal[o.canal] = o);
+
+  // ── Cards de grupo ──────────────────────────────────────────────────────
+  const grupoEntries = Object.entries(GRUPOS);
+  const grupoData = grupoEntries.map(([nome, g]) => {
+    let atend=0, qv=0;
+    g.canais.forEach(c => { if (byCanal[c]) { atend += byCanal[c].atend; qv += byCanal[c].qv; } });
+    const taxa = atend > 0 ? Math.round(qv/atend*1000)/10 : 0;
+    return { nome, ...g, atend, qv, taxa };
+  });
+
+  document.getElementById('s6-grupos').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px">
+      ${grupoData.map(g => `
+        <div style="background:var(--white);border:2px solid ${g.color};border-radius:14px;padding:20px;position:relative;overflow:hidden">
+          <div style="font-size:12px;font-weight:700;color:${g.color};letter-spacing:.08em;margin-bottom:8px">${g.emoji} ${g.nome}</div>
+          <div style="font-size:34px;font-weight:800;color:${g.taxa>=30?'#16A34A':g.taxa>=20?'#D4A017':'#EA580C'}">${g.taxa.toFixed(1)}%</div>
+          <div style="font-size:11px;color:var(--slate-l);margin-bottom:8px">taxa QV</div>
+          <div style="font-size:12px;color:var(--slate)">${g.atend} atend · ${g.qv} QV</div>
+          <div style="margin-top:12px;background:${g.color};color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;display:inline-block;letter-spacing:.06em">${g.badge}</div>
+        </div>`).join('')}
+    </div>`;
+
+  // ── Tabela detalhe ──────────────────────────────────────────────────────
+  const maxAtend = Math.max(...orig.map(o => o.atend));
+
+  // Agrupa canais por grupo para a tabela
+  const tabelaRows = [];
+  grupoData.forEach(g => {
+    // Linha de grupo (total)
+    tabelaRows.push({ tipo:'grupo', nome: g.emoji + ' ' + g.nome + ' Total', atend: g.atend, qv: g.qv, taxa: g.taxa, color: g.color });
+    // Linhas de canais individuais
+    g.canais.forEach(c => {
+      if (byCanal[c] && byCanal[c].atend > 0) {
+        const st = STATUS[c] || { label:'—', color:'#64748B' };
+        tabelaRows.push({ tipo:'canal', nome: '↳ ' + c.charAt(0)+c.slice(1).toLowerCase(), ...byCanal[c], st });
+      }
+    });
+  });
+
+  const linhasHtml = tabelaRows.map(r => {
+    const isGrupo = r.tipo === 'grupo';
+    const barW = maxAtend > 0 ? Math.round(r.atend / maxAtend * 100) : 0;
+    const barColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#5B8DEF' : '#EA580C';
+    const taxaColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#D4A017' : '#EA580C';
+    const stHtml = r.st ? `<span style="font-size:10px;font-weight:700;color:${r.st.color}">${r.st.label}</span>` : '';
+
+    return `<tr style="background:${isGrupo?'#F0F4FF':'var(--white)'};border-bottom:1px solid var(--border)">
+      <td style="padding:9px 14px;font-weight:${isGrupo?700:400};color:${isGrupo?(r.color||'var(--navy)'):'var(--slate)'};font-size:${isGrupo?13:12}px;white-space:nowrap">${r.nome}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:${isGrupo?700:400}">${r.atend}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:700;color:#16A34A">${r.qv}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:700;color:${taxaColor}">${r.taxa.toFixed(1)}%</td>
+      <td style="padding:9px 16px;width:200px">
+        <div style="background:#E2E8F0;border-radius:4px;height:10px;width:100%">
+          <div style="background:${barColor};border-radius:4px;height:10px;width:${barW}%;position:relative">
+            <span style="position:absolute;right:-30px;top:-1px;font-size:9px;color:var(--slate-l)">${barW}%</span>
+          </div>
+        </div>
+      </td>
+      <td style="padding:9px 14px;text-align:right">${stHtml}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('s6-tabela').innerHTML = `
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead>
+        <tr style="background:var(--navy)">
+          ${['CANAL','ATEND.','QVs','TAXA QV','VOLUME','STATUS'].map((h,i) =>
+            `<th style="padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-lt);text-align:${i>=1&&i<=3?'center':i===5?'right':'left'};font-weight:700">${h}</th>`
+          ).join('')}
+        </tr>
+      </thead>
+      <tbody>${linhasHtml}</tbody>
+    </table>`;
+}
+
+// ── S6: PASTAS ────────────────────────────────────────────────────────────────
+function renderS7(d) {
   const p = d.pastas || {};
   const sfh   = p.sfh   || {};
   const assoc = p.assoc || {};
   const linhas = p.linhas || [];
 
-  document.getElementById('s6-sub').textContent =
+  document.getElementById('s7-sub').textContent =
     `${(sfh.total||0) + (assoc.total||0)} pastas abertas · Atualizado ${d.gerado_em}`;
 
-  document.getElementById('s6-pastas').innerHTML = `
+  document.getElementById('s7-pastas').innerHTML = `
     <!-- SFH -->
     <div class="pasta-panel" style="--pp-color:#0D9488">
       <div class="pasta-header">

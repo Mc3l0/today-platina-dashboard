@@ -313,7 +313,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       <div class="header-meta" id="header-meta">—</div>
     </div>
     <nav class="header-nav">
-      <button class="nav-btn active" onclick="goSlide(0,this)">Capa</button>
+      <button class="nav-btn active" onclick="goSlide(0,this)">Visão Geral</button>
       <button class="nav-btn" onclick="goSlide(1,this)">Metodologia</button>
       <button class="nav-btn" onclick="goSlide(2,this)">Equipes</button>
       <button class="nav-btn" onclick="goSlide(3,this)">Tipo de Visita</button>
@@ -384,7 +384,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   <section class="slide" id="s4">
     <div class="slide-hdr">
       <div class="slide-eyebrow">Qualificação QV · Ranking</div>
-      <div class="slide-title">Taxa QV por Superintendente / Lançadora</div>
+      <div class="slide-title">Taxa QV por Superintendente / Empresa de Vendas</div>
       <div class="slide-sub">Ordenado por taxa de conversão decrescente</div>
     </div>
     <div class="super-wrap">
@@ -539,7 +539,7 @@ function renderS0(d) {
     { val: t.qv,              lbl: 'QVs Geradas',        color: '#16A34A' },
     { val: pctFmt(t.taxa_qv), lbl: 'Taxa QV Global',     color: '#0D9488' },
     { val: (d.pastas?.sfh?.total||0) + (d.pastas?.assoc?.total||0),
-                              lbl: 'Pastas Abertas',      color: '#5B8DEF' },
+                              lbl: 'Pastas',      color: '#5B8DEF' },
   ];
 
   document.getElementById('s0-kpis').innerHTML = kpis.map(k => `
@@ -901,40 +901,47 @@ function renderS6(d) {
     });
   });
 
+  // Escala das barras: relativa ao maior valor entre grupos e canais
+  const maxBarAtend = Math.max(...tabelaRows.map(r => r.atend));
+
   const linhasHtml = tabelaRows.map(r => {
     const isGrupo = r.tipo === 'grupo';
-    const barW = maxAtend > 0 ? Math.round(r.atend / maxAtend * 100) : 0;
+    const barW = maxBarAtend > 0 ? Math.round(r.atend / maxBarAtend * 100) : 0;
     const barColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#5B8DEF' : '#EA580C';
     const taxaColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#D4A017' : '#EA580C';
     const stHtml = r.st ? `<span style="font-size:10px;font-weight:700;color:${r.st.color}">${r.st.label}</span>` : '';
+    const pctLabel = barW + '%';
 
-    return `<tr style="background:${isGrupo?'#F0F4FF':'var(--white)'};border-bottom:1px solid var(--border)">
+    return `<tr style="background:${isGrupo?'rgba(91,141,239,.06)':'var(--white)'};border-bottom:1px solid var(--border)">
       <td style="padding:9px 14px;font-weight:${isGrupo?700:400};color:${isGrupo?(r.color||'var(--navy)'):'var(--slate)'};font-size:${isGrupo?13:12}px;white-space:nowrap">${r.nome}</td>
-      <td style="padding:9px 14px;text-align:center;font-weight:${isGrupo?700:400}">${r.atend}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:${isGrupo?700:400};color:var(--navy)">${r.atend}</td>
       <td style="padding:9px 14px;text-align:center;font-weight:700;color:#16A34A">${r.qv}</td>
-      <td style="padding:9px 14px;text-align:center;font-weight:700;color:${taxaColor}">${r.taxa.toFixed(1)}%</td>
-      <td style="padding:9px 16px;width:200px">
-        <div style="background:#E2E8F0;border-radius:4px;height:10px;width:100%">
-          <div style="background:${barColor};border-radius:4px;height:10px;width:${barW}%;position:relative">
-            <span style="position:absolute;right:-30px;top:-1px;font-size:9px;color:var(--slate-l)">${barW}%</span>
+      <td style="padding:9px 14px;text-align:center;font-weight:700;color:${taxaColor}">${(r.taxa||0).toFixed(1)}%</td>
+      <td style="padding:9px 16px;min-width:160px">
+        <div style="background:#E2E8F0;border-radius:4px;height:16px;width:100%;position:relative;overflow:hidden">
+          <div style="background:${barColor};height:16px;width:${barW}%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:5px">
+            ${barW > 15 ? `<span style="font-size:10px;font-weight:600;color:#fff">${pctLabel}</span>` : ''}
           </div>
         </div>
+        ${barW <= 15 ? `<span style="font-size:10px;color:var(--slate);margin-left:2px">${pctLabel}</span>` : ''}
       </td>
       <td style="padding:9px 14px;text-align:right">${stHtml}</td>
     </tr>`;
   }).join('');
 
   document.getElementById('s6-tabela').innerHTML = `
-    <table style="width:100%;border-collapse:collapse;font-size:13px">
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:580px">
       <thead>
         <tr style="background:var(--navy)">
           ${['CANAL','ATEND.','QVs','TAXA QV','VOLUME','STATUS'].map((h,i) =>
-            `<th style="padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-lt);text-align:${i>=1&&i<=3?'center':i===5?'right':'left'};font-weight:700">${h}</th>`
+            `<th style="padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-lt);text-align:${i>=1&&i<=3?'center':i===5?'right':'left'};font-weight:700;white-space:nowrap">${h}</th>`
           ).join('')}
         </tr>
       </thead>
       <tbody>${linhasHtml}</tbody>
-    </table>`;
+    </table>
+    </div>`;
 }
 
 // ── S6: PASTAS ────────────────────────────────────────────────────────────────

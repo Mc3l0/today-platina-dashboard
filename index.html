@@ -243,7 +243,7 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 .sem-stacked { height: 22px; border-radius: 6px; background: var(--border);
                position: relative; overflow: hidden; }
 .sem-bar-total { height: 100%; border-radius: 6px; position: absolute;
-                 background: var(--blue-lt); border: 1px solid var(--blue); left: 0; }
+                 background: var(--blue); opacity: .85; left: 0; }
 .sem-bar-qv { height: 100%; border-radius: 6px; position: absolute;
               background: var(--green); left: 0; }
 .sem-bar-meta { font-size: 11px; color: var(--slate); margin-top: 2px; }
@@ -883,7 +883,9 @@ function renderS6(d) {
     </div>`;
 
   // ── Tabela detalhe ──────────────────────────────────────────────────────
-  const maxAtend = Math.max(...orig.map(o => o.atend));
+  // maxAtend deve considerar grupos e canais para escala correta
+  const grupoTotais = grupoData.map(g => g.atend);
+  const maxAtend = Math.max(...grupoTotais, ...orig.map(o => o.atend));
 
   // Agrupa canais por grupo para a tabela
   const tabelaRows = [];

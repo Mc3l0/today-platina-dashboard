@@ -901,29 +901,40 @@ function renderS6(d) {
     });
   });
 
-  // Escala das barras: relativa ao maior valor entre grupos e canais
-  const maxBarAtend = Math.max(...tabelaRows.map(r => r.atend));
+  // Total geral de atendimentos para calcular participação
+  const totalAtend = orig.reduce((s, o) => s + o.atend, 0);
 
   const linhasHtml = tabelaRows.map(r => {
     const isGrupo = r.tipo === 'grupo';
-    const barW = maxBarAtend > 0 ? Math.round(r.atend / maxBarAtend * 100) : 0;
-    const barColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#5B8DEF' : '#EA580C';
-    const taxaColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#D4A017' : '#EA580C';
+    // Barra externa: participação no total de atendimentos
+    const partPct = totalAtend > 0 ? Math.round(r.atend / totalAtend * 100) : 0;
+    // Barra interna: % QV dentro dos atendimentos desse canal/grupo
+    const qvPct   = r.atend  > 0 ? Math.round(r.qv   / r.atend  * 100) : 0;
+    // A barra interna ocupa qvPct% da barra externa (proporção visual)
+    const qvInner = partPct > 0 ? Math.round(qvPct / 100 * 100) : 0; // % dentro da barra externa
+
+    const barColor     = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#5B8DEF' : '#EA580C';
+    const barColorDark = r.taxa >= 40 ? '#14532D' : r.taxa >= 30 ? '#134E4A' : r.taxa >= 20 ? '#1E3A5F' : '#7C2D12';
+    const taxaColor    = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#D4A017' : '#EA580C';
     const stHtml = r.st ? `<span style="font-size:10px;font-weight:700;color:${r.st.color}">${r.st.label}</span>` : '';
-    const pctLabel = barW + '%';
 
     return `<tr style="background:${isGrupo?'rgba(91,141,239,.06)':'var(--white)'};border-bottom:1px solid var(--border)">
       <td style="padding:9px 14px;font-weight:${isGrupo?700:400};color:${isGrupo?(r.color||'var(--navy)'):'var(--slate)'};font-size:${isGrupo?13:12}px;white-space:nowrap">${r.nome}</td>
       <td style="padding:9px 14px;text-align:center;font-weight:${isGrupo?700:400};color:var(--navy)">${r.atend}</td>
       <td style="padding:9px 14px;text-align:center;font-weight:700;color:#16A34A">${r.qv}</td>
       <td style="padding:9px 14px;text-align:center;font-weight:700;color:${taxaColor}">${(r.taxa||0).toFixed(1)}%</td>
-      <td style="padding:9px 16px;min-width:160px">
-        <div style="background:#E2E8F0;border-radius:4px;height:16px;width:100%;position:relative;overflow:hidden">
-          <div style="background:${barColor};height:16px;width:${barW}%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:5px">
-            ${barW > 15 ? `<span style="font-size:10px;font-weight:600;color:#fff">${pctLabel}</span>` : ''}
-          </div>
+      <td style="padding:9px 16px;min-width:180px">
+        <div title="${partPct}% do total de atendimentos · ${qvPct}% viraram QV"
+             style="background:#E2E8F0;border-radius:6px;height:18px;width:100%;position:relative;overflow:hidden">
+          <!-- barra clara: participação no total -->
+          <div style="position:absolute;left:0;top:0;height:100%;width:${partPct}%;background:${barColor};opacity:.35;border-radius:6px"></div>
+          <!-- barra escura: % QV dentro da participação -->
+          <div style="position:absolute;left:0;top:0;height:100%;width:${partPct * qvInner / 100}%;background:${barColorDark};border-radius:6px"></div>
+          <!-- label -->
+          <span style="position:absolute;left:${partPct > 20 ? 4 : partPct + 1}%;top:0;line-height:18px;font-size:10px;font-weight:600;color:${partPct > 20 ? '#fff' : 'var(--slate)'}">
+            ${partPct}%
+          </span>
         </div>
-        ${barW <= 15 ? `<span style="font-size:10px;color:var(--slate);margin-left:2px">${pctLabel}</span>` : ''}
       </td>
       <td style="padding:9px 14px;text-align:right">${stHtml}</td>
     </tr>`;
@@ -934,7 +945,7 @@ function renderS6(d) {
     <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:580px">
       <thead>
         <tr style="background:var(--navy)">
-          ${['CANAL','ATEND.','QVs','TAXA QV','VOLUME','STATUS'].map((h,i) =>
+          ${['CANAL','ATEND.','QVs','TAXA QV','PART. %  ·  QV%','STATUS'].map((h,i) =>
             `<th style="padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-lt);text-align:${i>=1&&i<=3?'center':i===5?'right':'left'};font-weight:700;white-space:nowrap">${h}</th>`
           ).join('')}
         </tr>

@@ -1,13 +1,13 @@
 {
-  "gerado_em": "12/06/2026 19:22",
+  "gerado_em": "12/06/2026 19:23",
   "totais": {
-    "atend": 347,
+    "atend": 348,
     "qv": 99,
-    "taxa_qv": 28.5,
+    "taxa_qv": 28.4,
     "analisando": 64,
     "pesquisa": 114,
     "sem_interesse": 60,
-    "sem_registro": 10
+    "sem_registro": 11
   },
   "fechamento": {
     "data_ref": "2026-06-12",
@@ -44,6 +44,16 @@
         "qv": 0
       },
       {
+        "super": "Up House",
+        "equipe": "UP HOUSE",
+        "VE": 1,
+        "I": 0,
+        "R": 0,
+        "T": 0,
+        "total": 1,
+        "qv": 0
+      },
+      {
         "super": "Medi",
         "equipe": "MEDI",
         "VE": 1,
@@ -55,11 +65,11 @@
       }
     ],
     "total": {
-      "VE": 2,
+      "VE": 3,
       "I": 2,
       "R": 0,
       "T": 0,
-      "total": 4,
+      "total": 5,
       "qv": 0
     }
   },
@@ -73,10 +83,10 @@
     },
     {
       "nome": "UP HOUSE",
-      "atend": 106,
+      "atend": 107,
       "qv": 37,
-      "taxa_qv": 34.9,
-      "ve_pct": 51.9
+      "taxa_qv": 34.6,
+      "ve_pct": 52.3
     },
     {
       "nome": "MEDI",
@@ -138,18 +148,18 @@
     },
     {
       "nome": "Up House",
-      "atend": 108,
+      "atend": 109,
       "qv": 38,
-      "taxa_qv": 35.2,
+      "taxa_qv": 34.9,
       "I": {
         "total": 39,
         "qv": 18,
         "pct": 46.2
       },
       "VE": {
-        "total": 57,
+        "total": 58,
         "qv": 15,
-        "pct": 26.3
+        "pct": 25.9
       },
       "R": {
         "total": 9,
@@ -251,9 +261,9 @@
     },
     {
       "tipo": "VE",
-      "total": 165,
+      "total": 166,
       "qv": 27,
-      "pct": 16.4
+      "pct": 16.3
     },
     {
       "tipo": "R",
@@ -301,9 +311,9 @@
     {
       "semana": "2026-06-08",
       "periodo": "08/06–12/06",
-      "atend": 27,
+      "atend": 28,
       "qv": 3,
-      "pct": 11.1
+      "pct": 10.7
     }
   ],
   "origem": [
@@ -380,16 +390,16 @@
       "taxa_qv": 25
     },
     {
+      "canal": "AÇÃO BRINDE",
+      "atend": 8,
+      "qv": 0,
+      "taxa_qv": 0
+    },
+    {
       "canal": "SEM CLASSIFICAÇÃO",
       "atend": 7,
       "qv": 3,
       "taxa_qv": 42.9
-    },
-    {
-      "canal": "AÇÃO BRINDE",
-      "atend": 7,
-      "qv": 0,
-      "taxa_qv": 0
     },
     {
       "canal": "GOOGLE",

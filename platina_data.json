@@ -1,0 +1,358 @@
+{
+  "gerado_em": "11/06/2026 21:45",
+  "total_atendimentos": 340,
+  "funil": {
+    "Ricardo": {
+      "VE": 24,
+      "I": 31,
+      "R": 3,
+      "T": 1,
+      "total": 59,
+      "QV": 19
+    },
+    "Nelma": {
+      "VE": 34,
+      "I": 26,
+      "R": 7,
+      "T": 2,
+      "total": 69,
+      "QV": 14
+    },
+    "Jamil": {
+      "VE": 2,
+      "I": 7,
+      "R": 3,
+      "T": 0,
+      "total": 12,
+      "QV": 5
+    },
+    "Medi": {
+      "VE": 45,
+      "I": 21,
+      "R": 1,
+      "T": 7,
+      "total": 74,
+      "QV": 15
+    },
+    "Up House": {
+      "VE": 56,
+      "I": 39,
+      "R": 9,
+      "T": 3,
+      "total": 107,
+      "QV": 38
+    },
+    "Rodrigo": {
+      "VE": 0,
+      "I": 9,
+      "R": 0,
+      "T": 0,
+      "total": 9,
+      "QV": 5
+    },
+    "Berillo": {
+      "VE": 0,
+      "I": 9,
+      "R": 1,
+      "T": 0,
+      "total": 10,
+      "QV": 3
+    },
+    "TOTAL": {
+      "VE": 161,
+      "I": 142,
+      "R": 24,
+      "T": 13,
+      "total": 340,
+      "QV": 99
+    }
+  },
+  "origem": {
+    "VIZINHO": 42,
+    "BIRUTA": 52,
+    "GOOGLE": 4,
+    "SITE CANOPUS": 10,
+    "TELEFONE": 1,
+    "WHATSAPP": 30,
+    "FOLHETO": 38,
+    "INSTAGRAM": 32,
+    "SEM CLASSIFICAÇÃO": 4,
+    "FACEBOOK": 10,
+    "ONLINE": 9,
+    "CAMPO": 8,
+    "PAINEL LED": 50,
+    "BANNER": 1,
+    "VIZINHA": 1,
+    "INDICAÇÃO AMIGO": 7,
+    "CARTEIRA": 30,
+    "JORNAL": 1,
+    "SDR": 1,
+    "FAIXA": 1,
+    "INTERNET": 3,
+    "AÇÃO BRINDE": 5
+  },
+  "timeline": [
+    {
+      "data": "2026-05-07",
+      "total": 10,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-08",
+      "total": 15,
+      "QV": 8
+    },
+    {
+      "data": "2026-05-09",
+      "total": 33,
+      "QV": 17
+    },
+    {
+      "data": "2026-05-10",
+      "total": 8,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-11",
+      "total": 13,
+      "QV": 0
+    },
+    {
+      "data": "2026-05-12",
+      "total": 9,
+      "QV": 3
+    },
+    {
+      "data": "2026-05-13",
+      "total": 11,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-14",
+      "total": 12,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-15",
+      "total": 20,
+      "QV": 6
+    },
+    {
+      "data": "2026-05-16",
+      "total": 25,
+      "QV": 8
+    },
+    {
+      "data": "2026-05-17",
+      "total": 7,
+      "QV": 1
+    },
+    {
+      "data": "2026-05-18",
+      "total": 2,
+      "QV": 0
+    },
+    {
+      "data": "2026-05-19",
+      "total": 6,
+      "QV": 2
+    },
+    {
+      "data": "2026-05-20",
+      "total": 12,
+      "QV": 0
+    },
+    {
+      "data": "2026-05-21",
+      "total": 8,
+      "QV": 3
+    },
+    {
+      "data": "2026-05-22",
+      "total": 10,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-23",
+      "total": 13,
+      "QV": 5
+    },
+    {
+      "data": "2026-05-24",
+      "total": 4,
+      "QV": 2
+    },
+    {
+      "data": "2026-05-25",
+      "total": 5,
+      "QV": 1
+    },
+    {
+      "data": "2026-05-26",
+      "total": 4,
+      "QV": 0
+    },
+    {
+      "data": "2026-05-27",
+      "total": 5,
+      "QV": 1
+    },
+    {
+      "data": "2026-05-28",
+      "total": 8,
+      "QV": 0
+    },
+    {
+      "data": "2026-05-29",
+      "total": 8,
+      "QV": 4
+    },
+    {
+      "data": "2026-05-30",
+      "total": 7,
+      "QV": 3
+    },
+    {
+      "data": "2026-05-31",
+      "total": 8,
+      "QV": 2
+    },
+    {
+      "data": "2026-06-01",
+      "total": 11,
+      "QV": 1
+    },
+    {
+      "data": "2026-06-02",
+      "total": 5,
+      "QV": 0
+    },
+    {
+      "data": "2026-06-03",
+      "total": 4,
+      "QV": 1
+    },
+    {
+      "data": "2026-06-04",
+      "total": 5,
+      "QV": 1
+    },
+    {
+      "data": "2026-06-05",
+      "total": 6,
+      "QV": 0
+    },
+    {
+      "data": "2026-06-06",
+      "total": 15,
+      "QV": 5
+    },
+    {
+      "data": "2026-06-07",
+      "total": 8,
+      "QV": 2
+    },
+    {
+      "data": "2026-06-08",
+      "total": 6,
+      "QV": 0
+    },
+    {
+      "data": "2026-06-09",
+      "total": 6,
+      "QV": 1
+    },
+    {
+      "data": "2026-06-10",
+      "total": 5,
+      "QV": 2
+    },
+    {
+      "data": "2026-06-11",
+      "total": 6,
+      "QV": 0
+    }
+  ],
+  "pastas": [
+    {
+      "super": "BH",
+      "direta_pendente": 0,
+      "direta_aprovada": 1,
+      "assoc_pendente": 0,
+      "assoc_analise": 0,
+      "assoc_sicaq": 0,
+      "direta_total": 1,
+      "assoc_total": 0
+    },
+    {
+      "super": "JAMIL",
+      "direta_pendente": 0,
+      "direta_aprovada": 0,
+      "assoc_pendente": 2,
+      "assoc_analise": 0,
+      "assoc_sicaq": 3,
+      "direta_total": 0,
+      "assoc_total": 5
+    },
+    {
+      "super": "NELMA",
+      "direta_pendente": 0,
+      "direta_aprovada": 1,
+      "assoc_pendente": 5,
+      "assoc_analise": 0,
+      "assoc_sicaq": 3,
+      "direta_total": 1,
+      "assoc_total": 8
+    },
+    {
+      "super": "RICARDO",
+      "direta_pendente": 4,
+      "direta_aprovada": 7,
+      "assoc_pendente": 7,
+      "assoc_analise": 0,
+      "assoc_sicaq": 4,
+      "direta_total": 11,
+      "assoc_total": 11
+    },
+    {
+      "super": "BERILLO",
+      "direta_pendente": 0,
+      "direta_aprovada": 5,
+      "assoc_pendente": 5,
+      "assoc_analise": 0,
+      "assoc_sicaq": 3,
+      "direta_total": 5,
+      "assoc_total": 8
+    },
+    {
+      "super": "RODRIGO",
+      "direta_pendente": 0,
+      "direta_aprovada": 10,
+      "assoc_pendente": 1,
+      "assoc_analise": 0,
+      "assoc_sicaq": 0,
+      "direta_total": 10,
+      "assoc_total": 1
+    },
+    {
+      "super": "MEDI",
+      "direta_pendente": 0,
+      "direta_aprovada": 0,
+      "assoc_pendente": 2,
+      "assoc_analise": 0,
+      "assoc_sicaq": 1,
+      "direta_total": 0,
+      "assoc_total": 3
+    },
+    {
+      "super": "UP HOUSE",
+      "direta_pendente": 0,
+      "direta_aprovada": 2,
+      "assoc_pendente": 7,
+      "assoc_analise": 0,
+      "assoc_sicaq": 11,
+      "direta_total": 2,
+      "assoc_total": 18
+    }
+  ]
+}

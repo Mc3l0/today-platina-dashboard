@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today Platina · Dashboard</title>
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  --navy:      #0D1B3E;
+  --navy-mid:  #162347;
+  --navy-lt:   #1E2D5A;
+  --bg:        #F8FAFC;
+  --off-white: #F4F6FA;
+  --gold:      #D4A017;
+  --gold-lt:   #F0C030;
+  --green:     #16A34A;
+  --green-lt:  #DCFCE7;
+  --teal:      #0D9488;
+  --teal-lt:   #CCFBF1;
+  --red:       #DC2626;
+  --red-lt:    #FEE2E2;
+  --orange:    #EA580C;
+  --orange-lt: #FEF3C7;
+  --purple:    #7C3AED;
+  --blue:      #5B8DEF;
+  --blue-lt:   #EFF6FF;
+  --white:     #FFFFFF;
+  --slate:     #64748B;
+  --slate-l:   #94A3B8;
+  --border:    #E2E8F0;
+  --text:      #1E293B;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+       background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ── LOGIN ──────────────────────────────────────────────────────────────── */
+#login-screen {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+}
+.login-box {
+  background: var(--navy-mid); border: 1px solid var(--navy-lt);
+  border-radius: 20px; padding: 52px 44px; width: 380px; text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,.5);
+}
+.login-eyebrow { font-size: 11px; letter-spacing: .25em; color: var(--gold);
+                 text-transform: uppercase; margin-bottom: 10px; }
+.login-title { font-size: 28px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+.login-sub { font-size: 13px; color: var(--slate-l); margin-bottom: 36px; }
+.login-box input {
+  width: 100%; padding: 13px 16px; border-radius: 10px;
+  border: 1px solid var(--navy-lt); background: var(--navy);
+  color: var(--white); font-size: 15px; margin-bottom: 12px;
+  outline: none; transition: border-color .2s; letter-spacing: .08em;
+}
+.login-box input:focus { border-color: var(--gold); }
+.login-box button {
+  width: 100%; padding: 13px; border-radius: 10px; border: none;
+  background: var(--gold); color: var(--navy); font-size: 15px;
+  font-weight: 800; cursor: pointer; transition: background .2s; margin-top: 4px;
+}
+.login-box button:hover { background: var(--gold-lt); }
+.login-error { color: var(--red); font-size: 12px; margin-top: 10px; display: none; }
+
+/* ── APP ────────────────────────────────────────────────────────────────── */
+#app { display: none; }
+
+/* ── HEADER ─────────────────────────────────────────────────────────────── */
+.header {
+  background: var(--navy); border-bottom: 3px solid var(--gold);
+  padding: 0 32px; position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.header-eyebrow { font-size: 10px; letter-spacing: .22em; color: var(--gold);
+                  text-transform: uppercase; }
+.header-title { font-size: 16px; font-weight: 700; color: var(--white); }
+.header-meta { font-size: 11px; color: var(--slate-l); }
+.header-nav { display: flex; gap: 2px; }
+.nav-btn {
+  padding: 7px 13px; border-radius: 6px; border: none;
+  background: transparent; color: var(--slate-l); font-size: 12px;
+  font-weight: 500; cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.nav-btn:hover { color: var(--white); background: var(--navy-lt); }
+.nav-btn.active { color: var(--navy); background: var(--gold); font-weight: 700; }
+
+/* ── SLIDES ─────────────────────────────────────────────────────────────── */
+.slide { display: none; padding: 40px 32px; max-width: 1160px; margin: 0 auto; }
+.slide.active { display: block; }
+.slide-eyebrow { font-size: 10px; letter-spacing: .2em; color: var(--gold);
+                 text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+.slide-title { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1.15; }
+.slide-sub { font-size: 14px; color: var(--slate); margin-top: 8px; }
+.slide-hdr { margin-bottom: 32px; }
+
+/* ── KPI STRIP ──────────────────────────────────────────────────────────── */
+.kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 32px; }
+.kpi-card {
+  background: var(--navy); border-radius: 14px; padding: 22px 18px 18px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.kpi-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background: var(--accent, var(--gold));
+}
+.kpi-val { font-size: 40px; font-weight: 900; color: var(--accent, var(--gold)); line-height: 1; }
+.kpi-label { font-size: 11px; color: var(--slate-l); margin-top: 8px; letter-spacing: .04em; }
+
+/* ── FUNIL ───────────────────────────────────────────────────────────────── */
+.funil-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 28px; }
+.funil-card {
+  border-radius: 14px; padding: 20px 16px; text-align: center;
+  border: 1.5px solid var(--fc-border, var(--border));
+  background: var(--fc-bg, var(--off-white));
+}
+.funil-num { font-size: 11px; font-weight: 800; color: var(--fc-color, var(--slate));
+             letter-spacing: .08em; margin-bottom: 8px; }
+.funil-val { font-size: 38px; font-weight: 900; color: var(--fc-color, var(--slate)); line-height: 1; }
+.funil-name { font-size: 12px; font-weight: 700; color: var(--fc-color, var(--slate));
+              margin-top: 6px; }
+.funil-desc { font-size: 11px; color: var(--slate); margin-top: 4px; line-height: 1.4; }
+.funil-note {
+  background: var(--navy); border-radius: 12px; padding: 16px 20px;
+  font-size: 13px; color: var(--gold-lt); line-height: 1.6;
+}
+
+/* ── EQUIPES ────────────────────────────────────────────────────────────── */
+.equipes-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 32px; }
+.equipe-card {
+  background: var(--white); border-radius: 14px; padding: 22px 20px;
+  border: 1.5px solid var(--border); border-top: 4px solid var(--ec-color, var(--blue));
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.eq-name { font-size: 10px; letter-spacing: .18em; color: var(--ec-color, var(--blue));
+           text-transform: uppercase; font-weight: 800; margin-bottom: 10px; }
+.eq-taxa { font-size: 38px; font-weight: 900; color: var(--ec-color, var(--blue));
+           line-height: 1; }
+.eq-taxa-lbl { font-size: 11px; color: var(--slate); margin-bottom: 12px; }
+.eq-detail { font-size: 13px; color: var(--slate); margin-bottom: 14px; }
+.eq-bar-bg { background: var(--border); border-radius: 4px; height: 6px; }
+.eq-bar-fill { border-radius: 4px; height: 6px;
+               background: var(--ec-color, var(--blue)); transition: width .8s ease; }
+
+.ve-section { margin-top: 28px; }
+.section-title { font-size: 10px; font-weight: 800; letter-spacing: .18em;
+                 color: var(--slate); text-transform: uppercase; margin-bottom: 14px; }
+
+/* ── BARRAS HORIZONTAIS ─────────────────────────────────────────────────── */
+.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.bar-label { font-size: 12px; font-weight: 600; color: var(--text);
+             width: 120px; flex-shrink: 0; }
+.bar-track { flex: 1; background: var(--border); border-radius: 6px; height: 22px;
+             position: relative; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; transition: width .7s ease;
+            display: flex; align-items: center; padding-left: 10px; }
+.bar-fill span { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.9);
+                 white-space: nowrap; }
+.bar-meta { font-size: 12px; color: var(--slate); width: 90px; flex-shrink: 0;
+            text-align: right; }
+
+/* ── SUPERS ─────────────────────────────────────────────────────────────── */
+.super-table { width: 100%; border-collapse: collapse; }
+.super-table thead th {
+  padding: 10px 14px; text-align: right; font-size: 10px; letter-spacing: .1em;
+  color: var(--white); text-transform: uppercase; background: var(--navy);
+}
+.super-table thead th:first-child { text-align: left; border-radius: 10px 0 0 0; }
+.super-table thead th:last-child { border-radius: 0 10px 0 0; }
+.super-table tbody tr { border-bottom: 1px solid var(--border); }
+.super-table tbody tr:hover td { background: var(--off-white); }
+.super-table td { padding: 10px 14px; text-align: right; font-size: 13px; color: var(--slate); }
+.super-table td:first-child { text-align: left; font-weight: 700; color: var(--navy); }
+.super-table .bar-cell { min-width: 140px; }
+.super-wrap { background: var(--white); border-radius: 14px; border: 1.5px solid var(--border);
+              overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+
+/* ── TIPOS DE VISITA ────────────────────────────────────────────────────── */
+.tipos-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+.tipo-card {
+  background: var(--white); border-radius: 14px; padding: 24px 20px;
+  border: 1.5px solid var(--tc-border, var(--border));
+  border-top: 4px solid var(--tc-color, var(--teal));
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.tc-label { font-size: 10px; letter-spacing: .18em; font-weight: 800;
+            color: var(--tc-color); text-transform: uppercase; margin-bottom: 10px; }
+.tc-pct { font-size: 42px; font-weight: 900; color: var(--tc-color); line-height: 1; }
+.tc-sub { font-size: 12px; color: var(--slate); margin-top: 6px; }
+
+/* Bicolor bars */
+.bicolor-section { margin-top: 32px; }
+.bicolor-header { display: grid; grid-template-columns: 140px 1fr 1fr 1fr;
+                  gap: 8px; margin-bottom: 8px; }
+.bc-col-hdr { font-size: 10px; font-weight: 800; letter-spacing: .12em;
+              text-transform: uppercase; padding: 6px 8px; border-radius: 6px;
+              text-align: center; }
+.bicolor-row { display: grid; grid-template-columns: 140px 1fr 1fr 1fr;
+               gap: 8px; margin-bottom: 4px; align-items: center; }
+.bicolor-row:nth-child(odd) .bc-name { color: var(--navy); }
+.bc-name { font-size: 13px; font-weight: 700; color: var(--navy);
+           padding: 8px 0; }
+.bc-eq { font-size: 11px; color: var(--slate); }
+.bc-bar-wrap { padding: 4px 0; }
+.bc-track { height: 20px; border-radius: 6px; position: relative;
+            overflow: hidden; background: var(--border); }
+.bc-fill-bg { height: 100%; border-radius: 6px; position: absolute;
+              left: 0; top: 0; }
+.bc-fill-qv { height: 100%; border-radius: 6px; position: absolute;
+              left: 0; top: 0; }
+.bc-meta { display: flex; justify-content: space-between;
+           margin-top: 4px; font-size: 11px; }
+.bc-pct { font-weight: 700; }
+.bc-frac { color: var(--slate); }
+
+/* ── SEMANAL ────────────────────────────────────────────────────────────── */
+.semanas-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                margin-bottom: 32px; }
+.sem-card {
+  background: var(--white); border-radius: 14px; padding: 20px 16px;
+  border: 1.5px solid var(--border); text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.sem-card.current { border-color: var(--orange); background: #FFF7F0; }
+.sem-period { font-size: 11px; font-weight: 700; color: var(--slate);
+              margin-bottom: 14px; letter-spacing: .04em; }
+.sem-atend { font-size: 38px; font-weight: 900; color: var(--blue); line-height: 1; }
+.sem-atend-lbl { font-size: 10px; color: var(--slate-l); margin-bottom: 10px; }
+.sem-divider { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+.sem-qv { font-size: 32px; font-weight: 900; line-height: 1; }
+.sem-qv-lbl { font-size: 11px; font-weight: 700; margin-top: 4px; }
+.sem-note { font-size: 11px; color: var(--slate); margin-top: 10px; line-height: 1.4; }
+
+/* Bar chart semanal */
+.sem-chart { background: var(--white); border-radius: 14px; border: 1.5px solid var(--border);
+             padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+.sem-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.sem-bar-lbl { font-size: 11px; color: var(--slate); width: 90px; flex-shrink: 0; }
+.sem-bar-area { flex: 1; }
+.sem-stacked { height: 22px; border-radius: 6px; background: var(--border);
+               position: relative; overflow: hidden; }
+.sem-bar-total { height: 100%; border-radius: 6px; position: absolute;
+                 background: var(--blue-lt); border: 1px solid var(--blue); left: 0; }
+.sem-bar-qv { height: 100%; border-radius: 6px; position: absolute;
+              background: var(--green); left: 0; }
+.sem-bar-meta { font-size: 11px; color: var(--slate); margin-top: 2px; }
+
+/* ── PASTAS ─────────────────────────────────────────────────────────────── */
+.pastas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.pasta-panel {
+  background: var(--white); border-radius: 14px; border: 2px solid var(--pp-color, var(--teal));
+  overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.pasta-header { background: var(--pp-color, var(--teal)); padding: 16px 20px; }
+.pasta-header h3 { font-size: 14px; font-weight: 800; color: var(--white); }
+.pasta-header p { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 2px; }
+.pasta-kpis { display: grid; grid-template-columns: repeat(4,1fr); padding: 20px;
+              gap: 8px; border-bottom: 1px solid var(--border); }
+.pk { text-align: center; }
+.pk-val { font-size: 28px; font-weight: 900; color: var(--pp-color, var(--teal)); }
+.pk-lbl { font-size: 10px; color: var(--slate); margin-top: 4px; text-transform: uppercase;
+          letter-spacing: .08em; }
+.pasta-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pasta-table th { background: var(--off-white); padding: 8px 14px; font-size: 10px;
+                  text-transform: uppercase; letter-spacing: .08em; color: var(--slate);
+                  text-align: right; border-bottom: 1px solid var(--border); }
+.pasta-table th:first-child { text-align: left; }
+.pasta-table td { padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--border); }
+.pasta-table td:first-child { text-align: left; font-weight: 600; color: var(--navy); }
+.pasta-table tr:last-child td { font-weight: 800; color: var(--navy);
+                                 background: var(--off-white); border-bottom: none; }
+.pasta-note { padding: 12px 20px; font-size: 12px; color: var(--slate);
+              border-top: 1px solid var(--border); }
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+.footer { background: var(--navy); color: var(--slate-l); text-align: center;
+          padding: 16px; font-size: 11px; margin-top: 40px; letter-spacing: .04em; }
+
+  @media (max-width: 768px) {
+    .midia-grupos > div { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 400px) {
+    .midia-grupos > div { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-eyebrow">Canopus Construtora</div>
+    <div class="login-title">Today Platina</div>
+    <div class="login-sub">Dashboard de Qualificação · Acesso restrito</div>
+    <input type="password" id="pwd-input" placeholder="Senha de acesso"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="login-error">Senha incorreta</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header class="header">
+    <div class="header-brand">
+      <div>
+        <div class="header-eyebrow">Canopus · Today Platina</div>
+        <div class="header-title">Dashboard de Qualificação</div>
+      </div>
+      <div class="header-meta" id="header-meta">—</div>
+    </div>
+    <nav class="header-nav">
+      <button class="nav-btn active" onclick="goSlide(0,this)">Capa</button>
+      <button class="nav-btn" onclick="goSlide(1,this)">Metodologia</button>
+      <button class="nav-btn" onclick="goSlide(2,this)">Equipes</button>
+      <button class="nav-btn" onclick="goSlide(3,this)">Tipo de Visita</button>
+      <button class="nav-btn" onclick="goSlide(4,this)">Ranking QV</button>
+      <button class="nav-btn" onclick="goSlide(5,this)">Semanal</button>
+      <button class="nav-btn" onclick="goSlide(6,this)">Mídia</button>
+      <button class="nav-btn" onclick="goSlide(7,this)">Pastas</button>
+    </nav>
+  </header>
+
+  <!-- S0: CAPA -->
+  <section class="slide active" id="s0">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Today Platina · Pré-Venda</div>
+      <div class="slide-title">Relatório de Qualificação de Leads</div>
+      <div class="slide-sub" id="s0-periodo">—</div>
+    </div>
+    <div class="kpi-strip" id="s0-kpis"></div>
+
+    <div style="margin-top:32px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
+        <div class="section-title" style="margin-bottom:0">Fechamento do Dia</div>
+        <div id="s0-fechamento-data" style="font-size:12px;color:var(--slate-l)">—</div>
+      </div>
+      <div style="background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+        <div id="s0-fechamento"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S1: METODOLOGIA -->
+  <section class="slide" id="s1">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Metodologia</div>
+      <div class="slide-title">Como medimos qualificação?</div>
+      <div class="slide-sub">Funil de 5 estágios — do primeiro contato à pasta aberta</div>
+    </div>
+    <div class="funil-grid" id="s1-funil"></div>
+    <div class="funil-note" id="s1-note"></div>
+  </section>
+
+  <!-- S2: EQUIPES -->
+  <section class="slide" id="s2">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Visão Geral · Equipes</div>
+      <div class="slide-title">Performance por Equipe de Vendas</div>
+      <div class="slide-sub">Volume de atendimentos, qualificações e taxa QV</div>
+    </div>
+    <div class="equipes-grid" id="s2-cards"></div>
+    <div class="ve-section">
+      <div class="section-title">VE % por Equipe (Tráfego Orgânico)</div>
+      <div id="s2-ve-bars"></div>
+    </div>
+  </section>
+
+  <!-- S3: TIPOS DE VISITA -->
+  <section class="slide" id="s3">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Qualificação QV · Tipos de Visita</div>
+      <div class="slide-title">Como cada equipe converte por tipo de visita?</div>
+      <div class="slide-sub">Barra longa = mais visitas · Parte escura = QVs geradas</div>
+    </div>
+    <div class="tipos-cards" id="s3-cards"></div>
+    <div class="bicolor-section" id="s3-bicolor"></div>
+  </section>
+
+  <!-- S4: RANKING QV -->
+  <section class="slide" id="s4">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Qualificação QV · Ranking</div>
+      <div class="slide-title">Taxa QV por Superintendente / Lançadora</div>
+      <div class="slide-sub">Ordenado por taxa de conversão decrescente</div>
+    </div>
+    <div class="super-wrap">
+      <table class="super-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;width:160px">Super / Equipe</th>
+            <th>Atend.</th>
+            <th>QVs</th>
+            <th style="width:200px;text-align:left;padding-left:16px">Taxa QV %</th>
+            <th style="text-align:right">Status</th>
+          </tr>
+        </thead>
+        <tbody id="s4-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- S5: SEMANAL -->
+  <section class="slide" id="s5">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Tendência · Evolução Semanal</div>
+      <div class="slide-title">Evolução por Semana: Atendimentos e QV</div>
+      <div class="slide-sub">Dados acumulados por semana (seg–dom)</div>
+    </div>
+    <div class="semanas-grid" id="s5-cards"></div>
+    <div class="sem-chart">
+      <div class="section-title" style="margin-bottom:16px">Comparativo Visual — Atendimentos vs QV</div>
+      <div id="s5-bars"></div>
+    </div>
+  </section>
+
+
+  <!-- S6: MÍDIA -->
+  <section class="slide" id="s6">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Mídia de Origem · Análise de Canal</div>
+      <div class="slide-title">De onde vêm os clientes que qualificam?</div>
+      <div class="slide-sub">Classificação da mídia de origem × taxa QV — acumulado mai–jun/2026</div>
+    </div>
+    <div class="midia-grupos" id="s6-grupos"></div>
+    <div style="margin-top:28px">
+      <div class="section-title">Detalhe por Canal de Mídia</div>
+      <div style="background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+        <div id="s6-tabela"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7: PASTAS -->
+  <section class="slide" id="s7">
+    <div class="slide-hdr">
+      <div class="slide-eyebrow">Qualificação · Status de Pastas</div>
+      <div class="slide-title">Pastas por Modalidade de Financiamento</div>
+      <div class="slide-sub" id="s7-sub">—</div>
+    </div>
+    <div class="pastas-grid" id="s7-pastas"></div>
+  </section>
+
+  <footer class="footer" id="footer-bar">Today Platina · Canopus Construtora · CONFIDENCIAL</footer>
+</div>
+
+<script>
+// ── AUTH ─────────────────────────────────────────────────────────────────────
+const SENHA = 'platina2026';
+function doLogin() {
+  const v = document.getElementById('pwd-input').value;
+  if (v === SENHA) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pwd-input').value = '';
+  }
+}
+
+// ── NAVEGAÇÃO ────────────────────────────────────────────────────────────────
+function goSlide(i, btn) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('s' + i).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── LOAD DATA ────────────────────────────────────────────────────────────────
+const JSON_URL = 'https://raw.githubusercontent.com/mc3l0/today-platina-dashboard/main/platina_data.json';
+
+function loadData() {
+  fetch(JSON_URL + '?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('header-meta').textContent = 'Atualizado ' + d.gerado_em;
+      document.getElementById('footer-bar').textContent =
+        'Today Platina · Canopus Construtora · Atualizado ' + d.gerado_em + ' · CONFIDENCIAL';
+      renderAll(d);
+    })
+    .catch(() => {
+      document.getElementById('header-meta').textContent = 'Erro ao carregar dados';
+    });
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function n(v) { return Number(v) || 0; }
+function pct(a, b) { return b > 0 ? Math.round(a/b*1000)/10 : 0; }
+function pctFmt(v) { return v.toFixed(1) + '%'; }
+const COLORS = {
+  HOUSE:     '#5B8DEF',
+  'UP HOUSE':'#0D9488',
+  MEDI:      '#EA580C',
+  PARCERIAS: '#7C3AED',
+};
+const SUPER_EQ = {
+  Ricardo:'HOUSE', Nelma:'HOUSE', Jamil:'HOUSE',
+  Rodrigo:'PARCERIAS', Berillo:'PARCERIAS',
+  'Up House':'UP HOUSE', Medi:'MEDI'
+};
+
+function statusColor(taxa) {
+  if (taxa >= 40) return '#16A34A';
+  if (taxa >= 30) return '#0D9488';
+  if (taxa >= 20) return '#D4A017';
+  return '#EA580C';
+}
+function statusLabel(taxa) {
+  if (taxa >= 40) return '★ DESTAQUE';
+  if (taxa >= 30) return 'BOM';
+  if (taxa >= 20) return 'ATENÇÃO';
+  return 'ABAIXO';
+}
+
+// ── RENDER ALL ───────────────────────────────────────────────────────────────
+function renderAll(d) {
+  renderS0(d);
+  renderS1(d);
+  renderS2(d);
+  renderS3(d);
+  renderS4(d);
+  renderS5(d);
+  renderS6(d);
+  renderS7(d);
+}
+
+// ── S0: CAPA ─────────────────────────────────────────────────────────────────
+function renderS0(d) {
+  const t = d.totais;
+  document.getElementById('s0-periodo').textContent =
+    'Período: Mai–Jun 2026 · Pré-Venda · Atualização ' + d.gerado_em;
+
+  const kpis = [
+    { val: t.atend,           lbl: 'Total Atendimentos', color: '#D4A017' },
+    { val: t.qv,              lbl: 'QVs Geradas',        color: '#16A34A' },
+    { val: pctFmt(t.taxa_qv), lbl: 'Taxa QV Global',     color: '#0D9488' },
+    { val: (d.pastas?.sfh?.total||0) + (d.pastas?.assoc?.total||0),
+                              lbl: 'Pastas Abertas',      color: '#5B8DEF' },
+  ];
+
+  document.getElementById('s0-kpis').innerHTML = kpis.map(k => `
+    <div class="kpi-card" style="--accent:${k.color}">
+      <div class="kpi-val">${k.val}</div>
+      <div class="kpi-label">${k.lbl}</div>
+    </div>`).join('');
+
+  // ── Fechamento diário ────────────────────────────────────────────────────
+  const f = d.fechamento;
+  if (!f) return;
+  document.getElementById('s0-fechamento-data').textContent = 'Referência: ' + f.data_fmt;
+  const eqColor = { HOUSE:'#5B8DEF', 'UP HOUSE':'#0D9488', MEDI:'#EA580C', PARCERIAS:'#7C3AED' };
+
+  const linhasHtml = (f.linhas || []).map(l => `
+    <tr>
+      <td style="font-weight:700;color:${eqColor[l.equipe]||'#5B8DEF'};padding:9px 12px;border-bottom:1px solid var(--border)">${l.super}</td>
+      <td style="font-size:11px;color:var(--slate-l);padding:9px 12px;border-bottom:1px solid var(--border)">${l.equipe}</td>
+      <td style="text-align:center;padding:9px 12px;border-bottom:1px solid var(--border)">${l.VE||0}</td>
+      <td style="text-align:center;padding:9px 12px;border-bottom:1px solid var(--border)">${l.I||0}</td>
+      <td style="text-align:center;padding:9px 12px;border-bottom:1px solid var(--border)">${l.R||0}</td>
+      <td style="text-align:center;padding:9px 12px;border-bottom:1px solid var(--border)">${l.T||0}</td>
+      <td style="text-align:center;font-weight:700;color:var(--navy);padding:9px 12px;border-bottom:1px solid var(--border)">${l.total||0}</td>
+      <td style="text-align:center;font-weight:700;color:#16A34A;padding:9px 12px;border-bottom:1px solid var(--border)">${l.qv||0}</td>
+    </tr>`).join('');
+
+  const tot = f.total || {};
+  const totHtml = `
+    <tr style="background:var(--navy)">
+      <td colspan="2" style="font-weight:800;color:var(--gold-lt);padding:10px 12px">TOTAL</td>
+      <td style="text-align:center;color:var(--white);padding:10px 12px">${tot.VE||0}</td>
+      <td style="text-align:center;color:var(--white);padding:10px 12px">${tot.I||0}</td>
+      <td style="text-align:center;color:var(--white);padding:10px 12px">${tot.R||0}</td>
+      <td style="text-align:center;color:var(--white);padding:10px 12px">${tot.T||0}</td>
+      <td style="text-align:center;font-weight:800;color:var(--gold-lt);padding:10px 12px">${tot.total||0}</td>
+      <td style="text-align:center;font-weight:800;color:#86EFAC;padding:10px 12px">${tot.qv||0}</td>
+    </tr>`;
+
+  document.getElementById('s0-fechamento').innerHTML = (!f.linhas || f.linhas.length === 0)
+    ? `<div style="color:var(--slate-l);font-size:13px;padding:16px 0">Nenhum atendimento registrado nesta data.</div>`
+    : `<div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="background:var(--off-white)">
+              ${['Super','Equipe','VE','I','R','T','Total','QV'].map((h,i) =>
+                `<th style="padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);border-bottom:1px solid var(--border);text-align:${i<2?'left':'center'}">${h}</th>`
+              ).join('')}
+            </tr>
+          </thead>
+          <tbody>${linhasHtml}${totHtml}</tbody>
+        </table>
+      </div>`;
+}
+
+// ── S1: METODOLOGIA ──────────────────────────────────────────────────────────
+function renderS1(d) {
+  const t = d.totais;
+  const etapas = [
+    { n:'01', nome:'PESQUISA', val: t.pesquisa,      desc:'Início da jornada. Lead conhecendo o produto.',
+      color:'#64748B', bg:'#F8FAFC', border:'#CBD5E1' },
+    { n:'02', nome:'ANALISANDO', val: t.analisando,  desc:'Interesse confirmado. Avaliando proposta.',
+      color:'#D4A017', bg:'#FFFBEB', border:'#FCD34D' },
+    { n:'03', nome:'QV',       val: t.qv,            desc:'Enviando documentos ou pasta completa.',
+      color:'#16A34A', bg:'#F0FDF4', border:'#86EFAC' },
+    { n:'04', nome:'SEM INTERESSE', val: t.sem_interesse, desc:'Descartado neste ciclo.',
+      color:'#EA580C', bg:'#FFF7ED', border:'#FDBA74' },
+    { n:'05', nome:'SEM REGISTRO', val: t.sem_registro,   desc:'Feedback pendente — dado a preencher.',
+      color:'#94A3B8', bg:'#F8FAFC', border:'#CBD5E1' },
+  ];
+
+  document.getElementById('s1-funil').innerHTML = etapas.map(e => `
+    <div class="funil-card" style="--fc-color:${e.color};--fc-bg:${e.bg};--fc-border:${e.border}">
+      <div class="funil-num">${e.n}</div>
+      <div class="funil-val">${n(e.val)}</div>
+      <div class="funil-name">${e.nome}</div>
+      <div class="funil-desc">${e.desc}</div>
+    </div>`).join('');
+
+  document.getElementById('s1-note').innerHTML =
+    `💡 <strong>QV (Qualificado para Venda)</strong> = cliente que enviou documentação ou tem pasta completa aberta. ` +
+    `É a métrica primária deste relatório. Taxa global: <strong>${pctFmt(t.taxa_qv)}</strong> ` +
+    `(${t.qv} QVs de ${t.atend} atendimentos). ` +
+    `Benchmark Linha Today (remanescentes, 2026): 14,8%.`;
+}
+
+// ── S2: EQUIPES ──────────────────────────────────────────────────────────────
+function renderS2(d) {
+  const eqs = d.equipes || [];
+  const maxAtend = Math.max(...eqs.map(e => e.atend));
+
+  const eqColors = { HOUSE:'#5B8DEF','UP HOUSE':'#0D9488', MEDI:'#EA580C', PARCERIAS:'#7C3AED' };
+
+  document.getElementById('s2-cards').innerHTML = eqs.map(e => {
+    const c = eqColors[e.nome] || '#5B8DEF';
+    return `<div class="equipe-card" style="--ec-color:${c}">
+      <div class="eq-name">${e.nome}</div>
+      <div class="eq-taxa">${pctFmt(e.taxa_qv)}</div>
+      <div class="eq-taxa-lbl">taxa QV</div>
+      <div class="eq-detail">${e.atend} atend &nbsp;·&nbsp; ${e.qv} QVs</div>
+      <div class="eq-bar-bg">
+        <div class="eq-bar-fill" style="width:${e.atend/maxAtend*100}%"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // VE bars (apenas equipes com VE > 0, exceto PARCERIAS)
+  const eqsVE = eqs.filter(e => e.nome !== 'PARCERIAS' && e.ve_pct > 0);
+  const maxVE = Math.max(...eqsVE.map(e => e.ve_pct));
+  document.getElementById('s2-ve-bars').innerHTML = eqsVE.map(e => {
+    const c = eqColors[e.nome] || '#0D9488';
+    return `<div class="bar-row">
+      <div class="bar-label">${e.nome}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${e.ve_pct/maxVE*100}%;background:${c}">
+          <span>${pctFmt(e.ve_pct)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── S3: TIPOS DE VISITA ───────────────────────────────────────────────────────
+function renderS3(d) {
+  const tipos = d.tipos || [];
+  const tipoCfg = {
+    I:  { label:'QV por Indicação',          color:'#7C3AED', border:'#C4B5FD', icon:'🤝' },
+    VE: { label:'QV por Visita Espontânea',  color:'#0D9488', border:'#99E6DD', icon:'🚶' },
+    R:  { label:'QV por Retorno',            color:'#16A34A', border:'#86EFAC', icon:'↩'  },
+  };
+
+  document.getElementById('s3-cards').innerHTML = tipos.map(t => {
+    const cfg = tipoCfg[t.tipo] || {};
+    return `<div class="tipo-card" style="--tc-color:${cfg.color};--tc-border:${cfg.border}">
+      <div class="tc-label">${cfg.icon || ''} ${cfg.label || t.tipo}</div>
+      <div class="tc-pct">${pctFmt(t.pct)}</div>
+      <div class="tc-sub">${t.total} atend · ${t.qv} QV</div>
+    </div>`;
+  }).join('');
+
+  // Bicolor por super
+  const supers = d.supers || [];
+  if (!supers.length) return;
+
+  // Max por tipo
+  const maxT = { I: Math.max(...supers.map(s => s.I.total)),
+                 VE: Math.max(...supers.map(s => s.VE.total)),
+                 R:  Math.max(...supers.map(s => s.R.total)) };
+
+  const tipoCols = [
+    { k:'I',  fg:'#7C3AED', bg:'#C4B5FD', lbl:'INDICAÇÃO (I)' },
+    { k:'VE', fg:'#0D9488', bg:'#99E6DD', lbl:'VE' },
+    { k:'R',  fg:'#16A34A', bg:'#86EFAC', lbl:'RETORNO (R)' },
+  ];
+
+  const hdrHtml = `<div class="bicolor-header">
+    <div></div>
+    ${tipoCols.map(tc => `<div class="bc-col-hdr" style="background:${tc.fg}20;color:${tc.fg}">${tc.lbl}</div>`).join('')}
+  </div>`;
+
+  const rowsHtml = supers.map((s, i) => {
+    const eq = SUPER_EQ[s.nome] || '';
+    const eqColor = COLORS[eq] || '#5B8DEF';
+    const cells = tipoCols.map(tc => {
+      const td = s[tc.k];
+      if (!td || td.total === 0) return `<div class="bc-bar-wrap"><div class="bc-track" style="background:#F1F5F9"><div style="font-size:10px;color:#CBD5E1;padding:2px 8px;line-height:18px">—</div></div></div>`;
+      const volW = maxT[tc.k] > 0 ? td.total / maxT[tc.k] * 100 : 0;
+      const qvW  = td.total > 0   ? td.qv    / td.total   * 100 : 0;
+      const pctColor = td.pct >= 45 ? '#16A34A' : td.pct >= 25 ? '#0D9488' : td.pct > 0 ? '#EA580C' : '#94A3B8';
+      return `<div class="bc-bar-wrap">
+        <div class="bc-track">
+          <div class="bc-fill-bg" style="width:${volW}%;background:${tc.bg}"></div>
+          <div class="bc-fill-qv" style="width:${volW*qvW/100}%;background:${tc.fg}"></div>
+        </div>
+        <div class="bc-meta">
+          <span class="bc-pct" style="color:${pctColor}">${pctFmt(td.pct)}</span>
+          <span class="bc-frac">${td.qv}/${td.total}</span>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="bicolor-row" style="background:${i%2===0?'#F8FAFC':'#FFF'}">
+      <div class="bc-name" style="color:${eqColor}">${s.nome}<br><span class="bc-eq">${eq}</span></div>
+      ${cells}
+    </div>`;
+  }).join('');
+
+  document.getElementById('s3-bicolor').innerHTML = `
+    <div class="section-title">Taxa QV por Super × Tipo de Visita</div>
+    <div style="background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;padding:16px 12px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+      ${hdrHtml}${rowsHtml}
+    </div>`;
+}
+
+// ── S4: RANKING QV ────────────────────────────────────────────────────────────
+function renderS4(d) {
+  const supers = d.supers || [];
+  const maxAtend = Math.max(...supers.map(s => s.atend));
+
+  document.getElementById('s4-tbody').innerHTML = supers.map((s, i) => {
+    const eq = SUPER_EQ[s.nome] || '';
+    const eqColor = COLORS[eq] || '#5B8DEF';
+    const sc = statusColor(s.taxa_qv);
+    const sl = statusLabel(s.taxa_qv);
+    const barW = s.taxa_qv / 60 * 100; // escala até 60%
+    const isJamil = s.nome === 'Jamil';
+    return `<tr>
+      <td>
+        <span style="font-weight:800;color:${eqColor}">${s.nome}${isJamil?' *':''}</span>
+        <br><span style="font-size:11px;color:var(--slate-l);font-weight:400">${eq}</span>
+      </td>
+      <td>${s.atend}</td>
+      <td style="font-weight:800;color:${sc}">${s.qv}</td>
+      <td style="text-align:left;padding-left:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:1;background:var(--border);border-radius:4px;height:14px;overflow:hidden">
+            <div style="width:${barW}%;height:100%;background:${sc};border-radius:4px;transition:width .7s ease"></div>
+          </div>
+          <span style="font-size:13px;font-weight:800;color:${sc};width:48px">${pctFmt(s.taxa_qv)}</span>
+        </div>
+      </td>
+      <td><span style="font-size:11px;font-weight:800;color:${sc};background:${sc}18;padding:3px 10px;border-radius:20px;white-space:nowrap">${sl}</span></td>
+    </tr>`;
+  }).join('') +
+  `<tr><td colspan="5" style="padding:10px 14px;font-size:11px;color:var(--slate);background:var(--off-white)">
+    * Jamil: início mai/2026 — amostra insuficiente para comparação formal.
+    &nbsp;|&nbsp; DESTAQUE ≥40% &nbsp;|&nbsp; BOM 30–39% &nbsp;|&nbsp; ATENÇÃO 20–29% &nbsp;|&nbsp; ABAIXO &lt;20%
+  </td></tr>`;
+}
+
+// ── S5: SEMANAL ───────────────────────────────────────────────────────────────
+function renderS5(d) {
+  const sems = d.semanal || [];
+  const maxAtend = Math.max(...sems.map(s => s.atend));
+  const notas = [
+    'Abertura — pico de qualificação.',
+    'Maior volume do período. QV estável.',
+    'Volume cai pela metade. QV segue tendência.',
+    'Volume baixo, mas QV se sustenta.',
+    'Primeiro sinal de recuperação — monitorar.',
+    'Semana em andamento.',
+  ];
+
+  document.getElementById('s5-cards').innerHTML = sems.map((s, i) => {
+    const isCurrent = i === sems.length - 1 && s.atend < 30;
+    const qvColor = s.pct >= 40 ? '#16A34A' : s.pct >= 25 ? '#0D9488' : '#EA580C';
+    return `<div class="sem-card${isCurrent?' current':''}">
+      <div class="sem-period">${s.periodo}</div>
+      <div class="sem-atend">${s.atend}</div>
+      <div class="sem-atend-lbl">atendimentos</div>
+      <hr class="sem-divider">
+      <div class="sem-qv" style="color:${qvColor}">${s.qv}</div>
+      <div class="sem-qv-lbl" style="color:${qvColor}">QV (${pctFmt(s.pct)})</div>
+      <div class="sem-note">${notas[i] || ''}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('s5-bars').innerHTML = sems.map(s => {
+    const totW = s.atend / maxAtend * 100;
+    const qvW  = s.atend > 0 ? s.qv / s.atend * 100 : 0;
+    return `<div class="sem-bar-row">
+      <div class="sem-bar-lbl">${s.periodo}</div>
+      <div class="sem-bar-area">
+        <div class="sem-stacked">
+          <div class="sem-bar-total" style="width:${totW}%"></div>
+          <div class="sem-bar-qv" style="width:${totW*qvW/100}%"></div>
+        </div>
+        <div class="sem-bar-meta">${s.atend} atend · ${s.qv} QV (${pctFmt(s.pct)})</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+
+// ── S6: MÍDIA ─────────────────────────────────────────────────────────────────
+function renderS6(d) {
+  const orig = d.origem || [];
+  if (!orig.length) return;
+
+  // ── Classificação por grupo ──────────────────────────────────────────────
+  const GRUPOS = {
+    'DIGITAL': {
+      emoji: '💻', canais: ['WHATSAPP','INSTAGRAM','SITE CANOPUS','GOOGLE','FACEBOOK','ONLINE','INTERNET','SDR'],
+      color: '#0D9488', badge: '★ MELHOR QV%'
+    },
+    'OOH/IMPRESSO': {
+      emoji: '🪧', canais: ['FOLHETO','BIRUTA','PAINEL LED','BANNER','FAIXA','JORNAL'],
+      color: '#5B8DEF', badge: 'MAIOR VOLUME'
+    },
+    'ORGÂNICO/INDICAÇÃO': {
+      emoji: '🤝', canais: ['VIZINHO','VIZINHA','CARTEIRA','INDICAÇÃO AMIGO','CAMPO','TELEFONE'],
+      color: '#7C3AED', badge: 'ALTA EFICIÊNCIA'
+    },
+    'CAMPO (PASSAGEM)': {
+      emoji: '📍', canais: ['CAMPO'],
+      color: '#EA580C', badge: 'BAIXO VOLUME'
+    },
+  };
+
+  // Status por canal
+  const STATUS = {
+    'WHATSAPP':       { label:'DESTAQUE',    color:'#16A34A' },
+    'INSTAGRAM':      { label:'↑ ASCENSÃO',  color:'#16A34A' },
+    'SITE CANOPUS':   { label:'ÓTIMO',       color:'#0D9488' },
+    'GOOGLE':         { label:'OK',          color:'#64748B' },
+    'FACEBOOK':       { label:'ATENÇÃO',     color:'#EA580C' },
+    'ONLINE':         { label:'OK',          color:'#64748B' },
+    'INTERNET':       { label:'OK',          color:'#64748B' },
+    'FOLHETO':        { label:'BOM',         color:'#5B8DEF' },
+    'BIRUTA':         { label:'OK',          color:'#64748B' },
+    'PAINEL LED':     { label:'ATENÇÃO',     color:'#EA580C' },
+    'VIZINHO':        { label:'EFICIENTE',   color:'#0D9488' },
+    'VIZINHA':        { label:'EFICIENTE',   color:'#0D9488' },
+    'CARTEIRA':       { label:'DESTAQUE',    color:'#16A34A' },
+    'INDICAÇÃO AMIGO':{ label:'BOM',         color:'#5B8DEF' },
+    'CAMPO':          { label:'OK',          color:'#64748B' },
+  };
+
+  // Monta índice de dados por canal
+  const byCanal = {};
+  orig.forEach(o => byCanal[o.canal] = o);
+
+  // ── Cards de grupo ──────────────────────────────────────────────────────
+  const grupoEntries = Object.entries(GRUPOS);
+  const grupoData = grupoEntries.map(([nome, g]) => {
+    let atend=0, qv=0;
+    g.canais.forEach(c => { if (byCanal[c]) { atend += byCanal[c].atend; qv += byCanal[c].qv; } });
+    const taxa = atend > 0 ? Math.round(qv/atend*1000)/10 : 0;
+    return { nome, ...g, atend, qv, taxa };
+  });
+
+  document.getElementById('s6-grupos').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:8px">
+      ${grupoData.map(g => `
+        <div style="background:var(--white);border:2px solid ${g.color};border-radius:14px;padding:20px;position:relative;overflow:hidden">
+          <div style="font-size:12px;font-weight:700;color:${g.color};letter-spacing:.08em;margin-bottom:8px">${g.emoji} ${g.nome}</div>
+          <div style="font-size:34px;font-weight:800;color:${g.taxa>=30?'#16A34A':g.taxa>=20?'#D4A017':'#EA580C'}">${g.taxa.toFixed(1)}%</div>
+          <div style="font-size:11px;color:var(--slate-l);margin-bottom:8px">taxa QV</div>
+          <div style="font-size:12px;color:var(--slate)">${g.atend} atend · ${g.qv} QV</div>
+          <div style="margin-top:12px;background:${g.color};color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;display:inline-block;letter-spacing:.06em">${g.badge}</div>
+        </div>`).join('')}
+    </div>`;
+
+  // ── Tabela detalhe ──────────────────────────────────────────────────────
+  const maxAtend = Math.max(...orig.map(o => o.atend));
+
+  // Agrupa canais por grupo para a tabela
+  const tabelaRows = [];
+  grupoData.forEach(g => {
+    // Linha de grupo (total)
+    tabelaRows.push({ tipo:'grupo', nome: g.emoji + ' ' + g.nome + ' Total', atend: g.atend, qv: g.qv, taxa: g.taxa, color: g.color });
+    // Linhas de canais individuais
+    g.canais.forEach(c => {
+      if (byCanal[c] && byCanal[c].atend > 0) {
+        const st = STATUS[c] || { label:'—', color:'#64748B' };
+        tabelaRows.push({ tipo:'canal', nome: '↳ ' + c.charAt(0)+c.slice(1).toLowerCase(), ...byCanal[c], st });
+      }
+    });
+  });
+
+  const linhasHtml = tabelaRows.map(r => {
+    const isGrupo = r.tipo === 'grupo';
+    const barW = maxAtend > 0 ? Math.round(r.atend / maxAtend * 100) : 0;
+    const barColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#5B8DEF' : '#EA580C';
+    const taxaColor = r.taxa >= 40 ? '#16A34A' : r.taxa >= 30 ? '#0D9488' : r.taxa >= 20 ? '#D4A017' : '#EA580C';
+    const stHtml = r.st ? `<span style="font-size:10px;font-weight:700;color:${r.st.color}">${r.st.label}</span>` : '';
+
+    return `<tr style="background:${isGrupo?'#F0F4FF':'var(--white)'};border-bottom:1px solid var(--border)">
+      <td style="padding:9px 14px;font-weight:${isGrupo?700:400};color:${isGrupo?(r.color||'var(--navy)'):'var(--slate)'};font-size:${isGrupo?13:12}px;white-space:nowrap">${r.nome}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:${isGrupo?700:400}">${r.atend}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:700;color:#16A34A">${r.qv}</td>
+      <td style="padding:9px 14px;text-align:center;font-weight:700;color:${taxaColor}">${r.taxa.toFixed(1)}%</td>
+      <td style="padding:9px 16px;width:200px">
+        <div style="background:#E2E8F0;border-radius:4px;height:10px;width:100%">
+          <div style="background:${barColor};border-radius:4px;height:10px;width:${barW}%;position:relative">
+            <span style="position:absolute;right:-30px;top:-1px;font-size:9px;color:var(--slate-l)">${barW}%</span>
+          </div>
+        </div>
+      </td>
+      <td style="padding:9px 14px;text-align:right">${stHtml}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('s6-tabela').innerHTML = `
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead>
+        <tr style="background:var(--navy)">
+          ${['CANAL','ATEND.','QVs','TAXA QV','VOLUME','STATUS'].map((h,i) =>
+            `<th style="padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-lt);text-align:${i>=1&&i<=3?'center':i===5?'right':'left'};font-weight:700">${h}</th>`
+          ).join('')}
+        </tr>
+      </thead>
+      <tbody>${linhasHtml}</tbody>
+    </table>`;
+}
+
+// ── S6: PASTAS ────────────────────────────────────────────────────────────────
+function renderS7(d) {
+  const p = d.pastas || {};
+  const sfh   = p.sfh   || {};
+  const assoc = p.assoc || {};
+  const linhas = p.linhas || [];
+
+  document.getElementById('s7-sub').textContent =
+    `${(sfh.total||0) + (assoc.total||0)} pastas abertas · Atualizado ${d.gerado_em}`;
+
+  document.getElementById('s7-pastas').innerHTML = `
+    <!-- SFH -->
+    <div class="pasta-panel" style="--pp-color:#0D9488">
+      <div class="pasta-header">
+        <h3>DIRETA + SFH</h3>
+        <p>Clientes fora do MCMV</p>
+      </div>
+      <div class="pasta-kpis">
+        <div class="pk"><div class="pk-val">${sfh.total||0}</div><div class="pk-lbl">Total</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--green)">${sfh.aprov||0}</div><div class="pk-lbl">Aprovadas</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--red)">${sfh.pend||0}</div><div class="pk-lbl">Pendentes</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--teal)">${pctFmt(sfh.pct_aprov||0)}</div><div class="pk-lbl">Aprovação</div></div>
+      </div>
+      <table class="pasta-table">
+        <thead><tr><th>Equipe</th><th>Pendente</th><th>Aprovada</th><th>Total</th></tr></thead>
+        <tbody>
+          ${linhas.map(l => `<tr>
+            <td>${l.super}</td>
+            <td style="color:${l.sfh_pend>0?'var(--red)':'var(--slate-l)'}">${l.sfh_pend}</td>
+            <td style="color:var(--green)">${l.sfh_aprov}</td>
+            <td>${l.sfh_total}</td>
+          </tr>`).join('')}
+          <tr><td>TOTAL</td>
+            <td style="color:var(--red)">${sfh.pend||0}</td>
+            <td style="color:var(--green)">${sfh.aprov||0}</td>
+            <td>${sfh.total||0}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pasta-note">${sfh.aprov||0} aprovadas · ${sfh.pend||0} pendentes — Perfil de renda qualificado.</div>
+    </div>
+
+    <!-- ASSOC -->
+    <div class="pasta-panel" style="--pp-color:#7C3AED">
+      <div class="pasta-header">
+        <h3>ASSOCIATIVO (MCMV)</h3>
+        <p>Clientes para Crédito Associativo</p>
+      </div>
+      <div class="pasta-kpis">
+        <div class="pk"><div class="pk-val">${assoc.total||0}</div><div class="pk-lbl">Total</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--red)">${assoc.pend||0}</div><div class="pk-lbl">Pendentes</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--green)">${assoc.sicaq||0}</div><div class="pk-lbl">SICAQ Aprov.</div></div>
+        <div class="pk"><div class="pk-val" style="color:var(--slate-l)">0</div><div class="pk-lbl">Em Análise</div></div>
+      </div>
+      <table class="pasta-table">
+        <thead><tr><th>Equipe</th><th>Pendente</th><th>Análise</th><th>SICAQ</th><th>Total</th></tr></thead>
+        <tbody>
+          ${linhas.map(l => `<tr>
+            <td>${l.super}</td>
+            <td style="color:${l.assoc_pend>0?'var(--red)':'var(--slate-l)'}">${l.assoc_pend}</td>
+            <td style="color:var(--slate-l)">${l.assoc_analise}</td>
+            <td style="color:var(--green)">${l.assoc_sicaq}</td>
+            <td>${l.assoc_total}</td>
+          </tr>`).join('')}
+          <tr><td>TOTAL</td>
+            <td style="color:var(--red)">${assoc.pend||0}</td>
+            <td>0</td>
+            <td style="color:var(--green)">${assoc.sicaq||0}</td>
+            <td>${assoc.total||0}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pasta-note">${assoc.total||0} pastas · ${assoc.pend||0} pendentes · ${assoc.sicaq||0} aprovados no SICAQ.</div>
+    </div>`;
+}
+</script>
+</body>
+</html>

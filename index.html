@@ -866,7 +866,7 @@ function renderS6(d) {
   const grupoData = grupoEntries.map(([nome, g]) => {
     let atend=0, qv=0;
     g.canais.forEach(c => { if (byCanal[c]) { atend += byCanal[c].atend; qv += byCanal[c].qv; } });
-    const taxa = atend > 0 ? Math.round(qv/atend*1000)/10 : 0;
+    const taxa = (atend > 0 && !isNaN(qv/atend)) ? Math.round(qv/atend*1000)/10 : 0;
     return { nome, ...g, atend, qv, taxa };
   });
 
@@ -894,7 +894,7 @@ function renderS6(d) {
     g.canais.forEach(c => {
       if (byCanal[c] && byCanal[c].atend > 0) {
         const st = STATUS[c] || { label:'—', color:'#64748B' };
-        tabelaRows.push({ tipo:'canal', nome: '↳ ' + c.charAt(0)+c.slice(1).toLowerCase(), ...byCanal[c], st });
+        const cData = byCanal[c]; tabelaRows.push({ tipo:'canal', nome: '↳ ' + c.charAt(0)+c.slice(1).toLowerCase(), atend:cData.atend||0, qv:cData.qv||0, taxa:cData.taxa_qv||0, st });
       }
     });
   });

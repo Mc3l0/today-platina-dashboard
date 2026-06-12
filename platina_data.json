@@ -1,5 +1,5 @@
 {
-  "gerado_em": "12/06/2026 12:57",
+  "gerado_em": "12/06/2026 14:35",
   "totais": {
     "atend": 343,
     "qv": 99,
@@ -294,6 +294,134 @@
       "atend": 23,
       "qv": 3,
       "pct": 13
+    }
+  ],
+  "origem": [
+    {
+      "canal": "BIRUTA",
+      "atend": 52,
+      "qv": 9,
+      "taxa_qv": 17.3
+    },
+    {
+      "canal": "PAINEL LED",
+      "atend": 50,
+      "qv": 5,
+      "taxa_qv": 10
+    },
+    {
+      "canal": "VIZINHO",
+      "atend": 43,
+      "qv": 8,
+      "taxa_qv": 18.6
+    },
+    {
+      "canal": "FOLHETO",
+      "atend": 38,
+      "qv": 9,
+      "taxa_qv": 23.7
+    },
+    {
+      "canal": "INSTAGRAM",
+      "atend": 32,
+      "qv": 13,
+      "taxa_qv": 40.6
+    },
+    {
+      "canal": "WHATSAPP",
+      "atend": 30,
+      "qv": 15,
+      "taxa_qv": 50
+    },
+    {
+      "canal": "CARTEIRA",
+      "atend": 30,
+      "qv": 15,
+      "taxa_qv": 50
+    },
+    {
+      "canal": "SITE CANOPUS",
+      "atend": 10,
+      "qv": 4,
+      "taxa_qv": 40
+    },
+    {
+      "canal": "FACEBOOK",
+      "atend": 10,
+      "qv": 3,
+      "taxa_qv": 30
+    },
+    {
+      "canal": "ONLINE",
+      "atend": 9,
+      "qv": 5,
+      "taxa_qv": 55.6
+    },
+    {
+      "canal": "CAMPO",
+      "atend": 8,
+      "qv": 3,
+      "taxa_qv": 37.5
+    },
+    {
+      "canal": "SEM CLASSIFICAÇÃO",
+      "atend": 7,
+      "qv": 3,
+      "taxa_qv": 42.9
+    },
+    {
+      "canal": "INDICAÇÃO AMIGO",
+      "atend": 7,
+      "qv": 2,
+      "taxa_qv": 28.6
+    },
+    {
+      "canal": "AÇÃO BRINDE",
+      "atend": 5,
+      "qv": 0,
+      "taxa_qv": 0
+    },
+    {
+      "canal": "GOOGLE",
+      "atend": 4,
+      "qv": 1,
+      "taxa_qv": 25
+    },
+    {
+      "canal": "INTERNET",
+      "atend": 3,
+      "qv": 2,
+      "taxa_qv": 66.7
+    },
+    {
+      "canal": "TELEFONE",
+      "atend": 1,
+      "qv": 0,
+      "taxa_qv": 0
+    },
+    {
+      "canal": "BANNER",
+      "atend": 1,
+      "qv": 0,
+      "taxa_qv": 0
+    },
+    {
+      "canal": "JORNAL",
+      "atend": 1,
+      "qv": 1,
+      "taxa_qv": 100
+    },
+    {
+      "canal": "SDR",
+      "atend": 1,
+      "qv": 1,
+      "taxa_qv": 100
+    },
+    {
+      "canal": "FAIXA",
+      "atend": 1,
+      "qv": 0,
+      "taxa_qv": 0
     }
   ],
   "pastas": {

@@ -1,13 +1,13 @@
 {
-  "gerado_em": "14/06/2026 17:50",
+  "gerado_em": "14/06/2026 18:30",
   "totais": {
     "atend": 370,
     "qv": 106,
     "taxa_qv": 28.6,
-    "analisando": 68,
+    "analisando": 69,
     "pesquisa": 122,
-    "sem_interesse": 66,
-    "sem_registro": 8
+    "sem_interesse": 67,
+    "sem_registro": 6
   },
   "fechamento": {
     "data_ref": "2026-06-13",

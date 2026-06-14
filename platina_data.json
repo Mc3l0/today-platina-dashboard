@@ -1,12 +1,12 @@
 {
-  "gerado_em": "14/06/2026 18:30",
+  "gerado_em": "14/06/2026 18:37",
   "totais": {
     "atend": 370,
-    "qv": 106,
-    "taxa_qv": 28.6,
-    "analisando": 69,
-    "pesquisa": 122,
-    "sem_interesse": 67,
+    "qv": 110,
+    "taxa_qv": 29.7,
+    "analisando": 68,
+    "pesquisa": 120,
+    "sem_interesse": 66,
     "sem_registro": 6
   },
   "fechamento": {
@@ -77,8 +77,8 @@
     {
       "nome": "HOUSE",
       "atend": 152,
-      "qv": 40,
-      "taxa_qv": 26.3,
+      "qv": 44,
+      "taxa_qv": 28.9,
       "ve_pct": 44.7
     },
     {
@@ -210,6 +210,27 @@
       }
     },
     {
+      "nome": "Nelma",
+      "atend": 73,
+      "qv": 18,
+      "taxa_qv": 24.7,
+      "I": {
+        "total": 27,
+        "qv": 8,
+        "pct": 29.6
+      },
+      "VE": {
+        "total": 37,
+        "qv": 7,
+        "pct": 18.9
+      },
+      "R": {
+        "total": 7,
+        "qv": 3,
+        "pct": 42.9
+      }
+    },
+    {
       "nome": "Medi",
       "atend": 82,
       "qv": 17,
@@ -229,41 +250,20 @@
         "qv": 1,
         "pct": 100
       }
-    },
-    {
-      "nome": "Nelma",
-      "atend": 73,
-      "qv": 14,
-      "taxa_qv": 19.2,
-      "I": {
-        "total": 27,
-        "qv": 6,
-        "pct": 22.2
-      },
-      "VE": {
-        "total": 37,
-        "qv": 5,
-        "pct": 13.5
-      },
-      "R": {
-        "total": 7,
-        "qv": 3,
-        "pct": 42.9
-      }
     }
   ],
   "tipos": [
     {
       "tipo": "I",
       "total": 151,
-      "qv": 64,
-      "pct": 42.4
+      "qv": 66,
+      "pct": 43.7
     },
     {
       "tipo": "VE",
       "total": 180,
-      "qv": 29,
-      "pct": 16.1
+      "qv": 31,
+      "pct": 17.2
     },
     {
       "tipo": "R",
@@ -277,15 +277,15 @@
       "semana": "2026-05-04",
       "periodo": "07/05–10/05",
       "atend": 69,
-      "qv": 33,
-      "pct": 47.8
+      "qv": 36,
+      "pct": 52.2
     },
     {
       "semana": "2026-05-11",
       "periodo": "11/05–17/05",
       "atend": 97,
-      "qv": 26,
-      "pct": 26.8
+      "qv": 27,
+      "pct": 27.8
     },
     {
       "semana": "2026-05-18",
@@ -320,8 +320,8 @@
     {
       "canal": "BIRUTA",
       "atend": 52,
-      "qv": 9,
-      "taxa_qv": 17.3
+      "qv": 10,
+      "taxa_qv": 19.2
     },
     {
       "canal": "PAINEL LED",
@@ -338,8 +338,8 @@
     {
       "canal": "VIZINHO",
       "atend": 44,
-      "qv": 8,
-      "taxa_qv": 18.2
+      "qv": 9,
+      "taxa_qv": 20.5
     },
     {
       "canal": "WHATSAPP",
@@ -350,8 +350,8 @@
     {
       "canal": "INSTAGRAM",
       "atend": 35,
-      "qv": 14,
-      "taxa_qv": 40
+      "qv": 15,
+      "taxa_qv": 42.9
     },
     {
       "canal": "CARTEIRA",
@@ -368,8 +368,8 @@
     {
       "canal": "FACEBOOK",
       "atend": 10,
-      "qv": 3,
-      "taxa_qv": 30
+      "qv": 4,
+      "taxa_qv": 40
     },
     {
       "canal": "ONLINE",

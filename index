@@ -821,7 +821,7 @@ function renderS6(d) {
       color: '#0D9488', badge: '★ MELHOR QV%'
     },
     'OOH/IMPRESSO': {
-      emoji: '🪧', canais: ['FOLHETO','BIRUTA','PAINEL LED','BANNER','FAIXA','JORNAL'],
+      emoji: '🪧', canais: ['FOLHETO','BIRUTA','PAINEL LED','BANNER','FAIXA','JORNAL','AÇÃO BRINDE'],
       color: '#5B8DEF', badge: 'MAIOR VOLUME'
     },
     'ORGÂNICO/INDICAÇÃO': {

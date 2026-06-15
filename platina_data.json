@@ -1,5 +1,5 @@
 {
-  "gerado_em": "15/06/2026 19:32",
+  "gerado_em": "15/06/2026 19:41",
   "totais": {
     "atend": 375,
     "qv": 108,
@@ -429,13 +429,13 @@
   ],
   "pastas": {
     "sfh": {
-      "total": 33,
-      "aprov": 31,
+      "total": 34,
+      "aprov": 32,
       "pend": 2,
-      "pct_aprov": 93.9
+      "pct_aprov": 94.1
     },
     "assoc": {
-      "total": 57,
+      "total": 56,
       "pend": 30,
       "sicaq": 26
     },
@@ -475,10 +475,10 @@
         "sfh_pend": 2,
         "sfh_aprov": 12,
         "assoc_pend": 6,
-        "assoc_analise": 1,
+        "assoc_analise": 0,
         "assoc_sicaq": 5,
         "sfh_total": 14,
-        "assoc_total": 12
+        "assoc_total": 11
       },
       {
         "super": "BERILLO",
@@ -513,11 +513,11 @@
       {
         "super": "UP HOUSE",
         "sfh_pend": 0,
-        "sfh_aprov": 2,
+        "sfh_aprov": 3,
         "assoc_pend": 7,
         "assoc_analise": 0,
         "assoc_sicaq": 11,
-        "sfh_total": 2,
+        "sfh_total": 3,
         "assoc_total": 18
       }
     ]

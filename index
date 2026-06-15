@@ -680,10 +680,8 @@ function renderS3(d) {
   const supers = d.supers || [];
   if (!supers.length) return;
 
-  // Escala = SOMA total de cada tipo (participação proporcional ao total global)
-  const totalT = { I:  supers.reduce((acc,s) => acc + s.I.total,  0),
-                   VE: supers.reduce((acc,s) => acc + s.VE.total, 0),
-                   R:  supers.reduce((acc,s) => acc + s.R.total,  0) };
+  // Escala = total de visitas do PRÓPRIO super (I+VE+R)
+  // Barra clara = mix interno do super; barra escura = %QV dentro de cada tipo
 
   const tipoCols = [
     { k:'I',  fg:'#7C3AED', bg:'#C4B5FD', lbl:'INDICAÇÃO (I)' },
@@ -702,8 +700,9 @@ function renderS3(d) {
     const cells = tipoCols.map(tc => {
       const td = s[tc.k];
       if (!td || td.total === 0) return `<div class="bc-bar-wrap"><div class="bc-track" style="background:#F1F5F9"><div style="font-size:10px;color:#CBD5E1;padding:2px 8px;line-height:18px">—</div></div></div>`;
-      const volW = totalT[tc.k] > 0 ? td.total / totalT[tc.k] * 100 : 0;
-      const qvW  = td.total > 0   ? td.qv    / td.total   * 100 : 0;
+      const totalSuper = (s.I.total||0) + (s.VE.total||0) + (s.R.total||0) || 1;
+      const volW = td.total / totalSuper * 100;
+      const qvW  = td.total > 0 ? td.qv / td.total * 100 : 0;
       const pctColor = td.pct >= 45 ? '#16A34A' : td.pct >= 25 ? '#0D9488' : td.pct > 0 ? '#EA580C' : '#94A3B8';
       return `<div class="bc-bar-wrap">
         <div class="bc-track">

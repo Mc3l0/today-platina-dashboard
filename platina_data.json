@@ -1,5 +1,5 @@
 {
-  "gerado_em": "14/06/2026 18:41",
+  "gerado_em": "15/06/2026 12:06",
   "totais": {
     "atend": 370,
     "qv": 108,
@@ -10,54 +10,44 @@
     "sem_registro": 6
   },
   "fechamento": {
-    "data_ref": "2026-06-13",
-    "data_fmt": "13/06/2026",
+    "data_ref": "2026-06-14",
+    "data_fmt": "14/06/2026",
     "linhas": [
       {
         "super": "Ricardo",
         "equipe": "HOUSE",
-        "VE": 3,
-        "I": 1,
-        "R": 0,
+        "VE": 0,
+        "I": 0,
+        "R": 1,
         "T": 0,
-        "total": 4,
+        "total": 1,
         "qv": 1
       },
       {
         "super": "Nelma",
         "equipe": "HOUSE",
         "VE": 1,
-        "I": 1,
-        "R": 0,
-        "T": 0,
-        "total": 2,
-        "qv": 0
-      },
-      {
-        "super": "Rodrigo",
-        "equipe": "PARCERIAS",
-        "VE": 0,
-        "I": 1,
+        "I": 0,
         "R": 0,
         "T": 0,
         "total": 1,
-        "qv": 1
+        "qv": 0
       },
       {
         "super": "Up House",
         "equipe": "UP HOUSE",
-        "VE": 3,
+        "VE": 1,
         "I": 1,
-        "R": 1,
+        "R": 0,
         "T": 0,
-        "total": 5,
-        "qv": 0
+        "total": 2,
+        "qv": 1
       },
       {
         "super": "Medi",
         "equipe": "MEDI",
-        "VE": 3,
-        "I": 0,
+        "VE": 2,
+        "I": 1,
         "R": 0,
         "T": 0,
         "total": 3,
@@ -65,11 +55,11 @@
       }
     ],
     "total": {
-      "VE": 10,
-      "I": 4,
+      "VE": 4,
+      "I": 2,
       "R": 1,
       "T": 0,
-      "total": 15,
+      "total": 7,
       "qv": 3
     }
   },

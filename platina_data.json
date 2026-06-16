@@ -1,5 +1,5 @@
 {
-  "gerado_em": "16/06/2026 16:25",
+  "gerado_em": "16/06/2026 16:29",
   "totais": {
     "atend": 375,
     "qv": 109,
@@ -13,6 +13,16 @@
     "data_ref": "2026-06-15",
     "data_fmt": "15/06/2026",
     "linhas": [
+      {
+        "super": "Nelma",
+        "equipe": "HOUSE",
+        "VE": 1,
+        "I": 0,
+        "R": 0,
+        "T": 0,
+        "total": 1,
+        "qv": 0
+      },
       {
         "super": "Up House",
         "equipe": "UP HOUSE",
@@ -35,11 +45,11 @@
       }
     ],
     "total": {
-      "VE": 3,
+      "VE": 4,
       "I": 1,
       "R": 0,
       "T": 0,
-      "total": 4,
+      "total": 5,
       "qv": 1
     }
   },
@@ -253,9 +263,9 @@
     {
       "semana": "2026-05-11",
       "periodo": "11/05–17/05",
-      "atend": 98,
+      "atend": 97,
       "qv": 28,
-      "pct": 28.6
+      "pct": 28.9
     },
     {
       "semana": "2026-05-18",
@@ -288,9 +298,9 @@
     {
       "semana": "2026-06-15",
       "periodo": "15/06–15/06",
-      "atend": 4,
+      "atend": 5,
       "qv": 1,
-      "pct": 25
+      "pct": 20
     }
   ],
   "origem": [

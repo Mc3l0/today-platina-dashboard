@@ -1,13 +1,13 @@
 {
-  "gerado_em": "15/06/2026 19:41",
+  "gerado_em": "16/06/2026 14:44",
   "totais": {
     "atend": 375,
-    "qv": 108,
-    "taxa_qv": 28.8,
-    "analisando": 67,
-    "pesquisa": 122,
+    "qv": 109,
+    "taxa_qv": 29.1,
+    "analisando": 68,
+    "pesquisa": 124,
     "sem_interesse": 68,
-    "sem_registro": 10
+    "sem_registro": 6
   },
   "fechamento": {
     "data_ref": "2026-06-15",
@@ -31,7 +31,7 @@
         "R": 0,
         "T": 0,
         "total": 3,
-        "qv": 0
+        "qv": 1
       }
     ],
     "total": {
@@ -40,7 +40,7 @@
       "R": 0,
       "T": 0,
       "total": 4,
-      "qv": 0
+      "qv": 1
     }
   },
   "equipes": [
@@ -61,8 +61,8 @@
     {
       "nome": "MEDI",
       "atend": 85,
-      "qv": 17,
-      "taxa_qv": 20,
+      "qv": 18,
+      "taxa_qv": 21.2,
       "ve_pct": 62.4
     },
     {
@@ -203,8 +203,8 @@
     {
       "nome": "Medi",
       "atend": 85,
-      "qv": 17,
-      "taxa_qv": 20,
+      "qv": 18,
+      "taxa_qv": 21.2,
       "I": {
         "total": 24,
         "qv": 9,
@@ -212,8 +212,8 @@
       },
       "VE": {
         "total": 53,
-        "qv": 7,
-        "pct": 13.2
+        "qv": 8,
+        "pct": 15.1
       },
       "R": {
         "total": 1,
@@ -232,8 +232,8 @@
     {
       "tipo": "VE",
       "total": 184,
-      "qv": 30,
-      "pct": 16.3
+      "qv": 31,
+      "pct": 16.8
     },
     {
       "tipo": "R",
@@ -289,8 +289,8 @@
       "semana": "2026-06-15",
       "periodo": "15/06–15/06",
       "atend": 4,
-      "qv": 0,
-      "pct": 0
+      "qv": 1,
+      "pct": 25
     }
   ],
   "origem": [
@@ -309,8 +309,8 @@
     {
       "canal": "VIZINHO",
       "atend": 45,
-      "qv": 9,
-      "taxa_qv": 20
+      "qv": 10,
+      "taxa_qv": 22.2
     },
     {
       "canal": "FOLHETO",

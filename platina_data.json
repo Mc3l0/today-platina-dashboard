@@ -1,10 +1,10 @@
 {
-  "gerado_em": "16/06/2026 16:29",
+  "gerado_em": "16/06/2026 16:40",
   "totais": {
-    "atend": 375,
-    "qv": 109,
-    "taxa_qv": 29.1,
-    "analisando": 68,
+    "atend": 377,
+    "qv": 110,
+    "taxa_qv": 29.2,
+    "analisando": 69,
     "pesquisa": 124,
     "sem_interesse": 68,
     "sem_registro": 6
@@ -70,29 +70,29 @@
     },
     {
       "nome": "MEDI",
-      "atend": 85,
+      "atend": 86,
       "qv": 18,
-      "taxa_qv": 21.2,
-      "ve_pct": 62.4
+      "taxa_qv": 20.9,
+      "ve_pct": 62.8
     },
     {
       "nome": "PARCERIAS",
-      "atend": 22,
-      "qv": 11,
-      "taxa_qv": 50,
-      "ve_pct": 4.5
+      "atend": 23,
+      "qv": 12,
+      "taxa_qv": 52.2,
+      "ve_pct": 4.3
     }
   ],
   "supers": [
     {
       "nome": "Rodrigo",
-      "atend": 11,
-      "qv": 7,
-      "taxa_qv": 63.6,
+      "atend": 12,
+      "qv": 8,
+      "taxa_qv": 66.7,
       "I": {
-        "total": 11,
-        "qv": 7,
-        "pct": 63.6
+        "total": 12,
+        "qv": 8,
+        "pct": 66.7
       },
       "VE": {
         "total": 0,
@@ -212,18 +212,18 @@
     },
     {
       "nome": "Medi",
-      "atend": 85,
+      "atend": 86,
       "qv": 18,
-      "taxa_qv": 21.2,
+      "taxa_qv": 20.9,
       "I": {
         "total": 24,
         "qv": 9,
         "pct": 37.5
       },
       "VE": {
-        "total": 53,
+        "total": 54,
         "qv": 8,
-        "pct": 15.1
+        "pct": 14.8
       },
       "R": {
         "total": 1,
@@ -235,13 +235,13 @@
   "tipos": [
     {
       "tipo": "I",
-      "total": 152,
-      "qv": 64,
-      "pct": 42.1
+      "total": 153,
+      "qv": 65,
+      "pct": 42.5
     },
     {
       "tipo": "VE",
-      "total": 184,
+      "total": 185,
       "qv": 31,
       "pct": 16.8
     },
@@ -291,9 +291,9 @@
     {
       "semana": "2026-06-08",
       "periodo": "08/06–14/06",
-      "atend": 50,
-      "qv": 10,
-      "pct": 20
+      "atend": 52,
+      "qv": 11,
+      "pct": 21.2
     },
     {
       "semana": "2026-06-15",
@@ -330,9 +330,9 @@
     },
     {
       "canal": "WHATSAPP",
-      "atend": 36,
-      "qv": 17,
-      "taxa_qv": 47.2
+      "atend": 37,
+      "qv": 18,
+      "taxa_qv": 48.6
     },
     {
       "canal": "INSTAGRAM",
@@ -390,9 +390,9 @@
     },
     {
       "canal": "PLACA",
-      "atend": 6,
+      "atend": 7,
       "qv": 2,
-      "taxa_qv": 33.3
+      "taxa_qv": 28.6
     },
     {
       "canal": "GOOGLE",

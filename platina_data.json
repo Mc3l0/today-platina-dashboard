@@ -1,13 +1,13 @@
 {
-  "gerado_em": "17/06/2026 13:42",
+  "gerado_em": "17/06/2026 17:41",
   "totais": {
     "atend": 394,
-    "qv": 109,
-    "taxa_qv": 27.7,
+    "qv": 110,
+    "taxa_qv": 27.9,
     "analisando": 70,
-    "pesquisa": 124,
-    "sem_interesse": 68,
-    "sem_registro": 23
+    "pesquisa": 125,
+    "sem_interesse": 81,
+    "sem_registro": 8
   },
   "fechamento": {
     "data_ref": "2026-06-16",
@@ -41,7 +41,7 @@
         "R": 0,
         "T": 0,
         "total": 1,
-        "qv": 0
+        "qv": 1
       },
       {
         "super": "Up House",
@@ -70,7 +70,7 @@
       "R": 1,
       "T": 0,
       "total": 17,
-      "qv": 0
+      "qv": 1
     }
   },
   "equipes": [
@@ -98,8 +98,8 @@
     {
       "nome": "PARCERIAS",
       "atend": 24,
-      "qv": 11,
-      "taxa_qv": 45.8,
+      "qv": 12,
+      "taxa_qv": 50,
       "ve_pct": 4.2
     }
   ],
@@ -107,12 +107,12 @@
     {
       "nome": "Rodrigo",
       "atend": 13,
-      "qv": 7,
-      "taxa_qv": 53.8,
+      "qv": 8,
+      "taxa_qv": 61.5,
       "I": {
         "total": 13,
-        "qv": 7,
-        "pct": 53.8
+        "qv": 8,
+        "pct": 61.5
       },
       "VE": {
         "total": 0,
@@ -256,8 +256,8 @@
     {
       "tipo": "I",
       "total": 155,
-      "qv": 64,
-      "pct": 41.3
+      "qv": 65,
+      "pct": 41.9
     },
     {
       "tipo": "VE",
@@ -319,8 +319,8 @@
       "semana": "2026-06-15",
       "periodo": "15/06–16/06",
       "atend": 22,
-      "qv": 1,
-      "pct": 4.5
+      "qv": 2,
+      "pct": 9.1
     }
   ],
   "origem": [
@@ -363,8 +363,8 @@
     {
       "canal": "CARTEIRA",
       "atend": 31,
-      "qv": 15,
-      "taxa_qv": 48.4
+      "qv": 16,
+      "taxa_qv": 51.6
     },
     {
       "canal": "AÇÃO BRINDE",
@@ -465,9 +465,9 @@
       "pct_aprov": 94.1
     },
     "assoc": {
-      "total": 57,
+      "total": 58,
       "pend": 31,
-      "sicaq": 26
+      "sicaq": 27
     },
     "linhas": [
       {
@@ -494,9 +494,9 @@
         "super": "NELMA",
         "sfh_pend": 0,
         "sfh_aprov": 1,
-        "assoc_pend": 5,
+        "assoc_pend": 4,
         "assoc_analise": 0,
-        "assoc_sicaq": 3,
+        "assoc_sicaq": 4,
         "sfh_total": 1,
         "assoc_total": 8
       },
@@ -524,11 +524,11 @@
         "super": "RODRIGO",
         "sfh_pend": 0,
         "sfh_aprov": 10,
-        "assoc_pend": 2,
+        "assoc_pend": 3,
         "assoc_analise": 0,
         "assoc_sicaq": 0,
         "sfh_total": 10,
-        "assoc_total": 2
+        "assoc_total": 3
       },
       {
         "super": "MEDI",

@@ -1,13 +1,13 @@
 {
-  "gerado_em": "17/06/2026 19:15",
+  "gerado_em": "18/06/2026 12:20",
   "totais": {
     "atend": 408,
-    "qv": 111,
-    "taxa_qv": 27.2,
-    "analisando": 70,
+    "qv": 113,
+    "taxa_qv": 27.7,
+    "analisando": 71,
     "pesquisa": 128,
-    "sem_interesse": 85,
-    "sem_registro": 14
+    "sem_interesse": 87,
+    "sem_registro": 9
   },
   "fechamento": {
     "data_ref": "2026-06-17",
@@ -51,7 +51,7 @@
         "R": 0,
         "T": 0,
         "total": 4,
-        "qv": 1
+        "qv": 3
       }
     ],
     "total": {
@@ -60,15 +60,15 @@
       "R": 0,
       "T": 0,
       "total": 14,
-      "qv": 1
+      "qv": 3
     }
   },
   "equipes": [
     {
       "nome": "HOUSE",
       "atend": 171,
-      "qv": 43,
-      "taxa_qv": 25.1,
+      "qv": 44,
+      "taxa_qv": 25.7,
       "ve_pct": 49.1
     },
     {
@@ -81,8 +81,8 @@
     {
       "nome": "MEDI",
       "atend": 88,
-      "qv": 18,
-      "taxa_qv": 20.5,
+      "qv": 19,
+      "taxa_qv": 21.6,
       "ve_pct": 63.6
     },
     {
@@ -200,6 +200,27 @@
       }
     },
     {
+      "nome": "Medi",
+      "atend": 96,
+      "qv": 21,
+      "taxa_qv": 21.9,
+      "I": {
+        "total": 25,
+        "qv": 9,
+        "pct": 36
+      },
+      "VE": {
+        "total": 63,
+        "qv": 11,
+        "pct": 17.5
+      },
+      "R": {
+        "total": 1,
+        "qv": 1,
+        "pct": 100
+      }
+    },
+    {
       "nome": "Nelma",
       "atend": 79,
       "qv": 16,
@@ -219,27 +240,6 @@
         "qv": 4,
         "pct": 57.1
       }
-    },
-    {
-      "nome": "Medi",
-      "atend": 96,
-      "qv": 19,
-      "taxa_qv": 19.8,
-      "I": {
-        "total": 25,
-        "qv": 9,
-        "pct": 36
-      },
-      "VE": {
-        "total": 63,
-        "qv": 9,
-        "pct": 14.3
-      },
-      "R": {
-        "total": 1,
-        "qv": 1,
-        "pct": 100
-      }
     }
   ],
   "tipos": [
@@ -252,8 +252,8 @@
     {
       "tipo": "VE",
       "total": 211,
-      "qv": 32,
-      "pct": 15.2
+      "qv": 34,
+      "pct": 16.1
     },
     {
       "tipo": "R",
@@ -309,22 +309,22 @@
       "semana": "2026-06-15",
       "periodo": "15/06–17/06",
       "atend": 36,
-      "qv": 3,
-      "pct": 8.3
+      "qv": 5,
+      "pct": 13.9
     }
   ],
   "origem": [
     {
       "canal": "PAINEL LED",
       "atend": 57,
-      "qv": 5,
-      "taxa_qv": 8.8
+      "qv": 6,
+      "taxa_qv": 10.5
     },
     {
       "canal": "BIRUTA",
       "atend": 54,
-      "qv": 9,
-      "taxa_qv": 16.7
+      "qv": 10,
+      "taxa_qv": 18.5
     },
     {
       "canal": "VIZINHO",

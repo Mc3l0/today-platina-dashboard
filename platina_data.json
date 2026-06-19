@@ -1,13 +1,13 @@
 {
-  "gerado_em": "18/06/2026 21:37",
+  "gerado_em": "19/06/2026 12:23",
   "totais": {
     "atend": 412,
-    "qv": 112,
-    "taxa_qv": 27.2,
-    "analisando": 72,
+    "qv": 113,
+    "taxa_qv": 27.4,
+    "analisando": 74,
     "pesquisa": 128,
-    "sem_interesse": 87,
-    "sem_registro": 13
+    "sem_interesse": 89,
+    "sem_registro": 8
   },
   "fechamento": {
     "data_ref": "2026-06-18",
@@ -31,7 +31,7 @@
         "R": 1,
         "T": 0,
         "total": 2,
-        "qv": 0
+        "qv": 1
       },
       {
         "super": "Medi",
@@ -50,7 +50,7 @@
       "R": 1,
       "T": 0,
       "total": 4,
-      "qv": 0
+      "qv": 1
     }
   },
   "equipes": [
@@ -64,8 +64,8 @@
     {
       "nome": "UP HOUSE",
       "atend": 127,
-      "qv": 38,
-      "taxa_qv": 29.9,
+      "qv": 39,
+      "taxa_qv": 30.7,
       "ve_pct": 55.9
     },
     {
@@ -127,6 +127,27 @@
       }
     },
     {
+      "nome": "Up House",
+      "atend": 130,
+      "qv": 40,
+      "taxa_qv": 30.8,
+      "I": {
+        "total": 42,
+        "qv": 19,
+        "pct": 45.2
+      },
+      "VE": {
+        "total": 73,
+        "qv": 15,
+        "pct": 20.5
+      },
+      "R": {
+        "total": 12,
+        "qv": 6,
+        "pct": 50
+      }
+    },
+    {
       "nome": "Ricardo",
       "atend": 69,
       "qv": 21,
@@ -166,27 +187,6 @@
         "total": 1,
         "qv": 0,
         "pct": 0
-      }
-    },
-    {
-      "nome": "Up House",
-      "atend": 130,
-      "qv": 39,
-      "taxa_qv": 30,
-      "I": {
-        "total": 42,
-        "qv": 19,
-        "pct": 45.2
-      },
-      "VE": {
-        "total": 73,
-        "qv": 15,
-        "pct": 20.5
-      },
-      "R": {
-        "total": 12,
-        "qv": 5,
-        "pct": 41.7
       }
     },
     {
@@ -248,8 +248,8 @@
     {
       "tipo": "R",
       "total": 28,
-      "qv": 14,
-      "pct": 50
+      "qv": 15,
+      "pct": 53.6
     }
   ],
   "semanal": [
@@ -299,13 +299,13 @@
       "semana": "2026-06-15",
       "periodo": "15/06–18/06",
       "atend": 40,
-      "qv": 4,
-      "pct": 10
+      "qv": 5,
+      "pct": 12.5
     }
   ],
   "origem": [
     {
-      "canal": "PAINEL LED",
+      "canal": "PAINEL DE LED",
       "atend": 59,
       "qv": 6,
       "taxa_qv": 10.2
@@ -325,8 +325,8 @@
     {
       "canal": "FOLHETO",
       "atend": 46,
-      "qv": 10,
-      "taxa_qv": 21.7
+      "qv": 11,
+      "taxa_qv": 23.9
     },
     {
       "canal": "WHATSAPP",

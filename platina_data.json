@@ -1,5 +1,5 @@
 {
-  "gerado_em": "18/06/2026 21:26",
+  "gerado_em": "18/06/2026 21:37",
   "totais": {
     "atend": 412,
     "qv": 112,
@@ -445,9 +445,9 @@
       "pct_aprov": 94.1
     },
     "assoc": {
-      "total": 58,
+      "total": 59,
       "pend": 31,
-      "sicaq": 27
+      "sicaq": 28
     },
     "linhas": [
       {
@@ -486,9 +486,9 @@
         "sfh_aprov": 12,
         "assoc_pend": 7,
         "assoc_analise": 0,
-        "assoc_sicaq": 5,
+        "assoc_sicaq": 6,
         "sfh_total": 14,
-        "assoc_total": 12
+        "assoc_total": 13
       },
       {
         "super": "BERILLO",

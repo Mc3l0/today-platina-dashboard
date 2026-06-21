@@ -1,36 +1,56 @@
 {
-  "gerado_em": "20/06/2026 18:52",
+  "gerado_em": "21/06/2026 18:39",
   "totais": {
-    "atend": 428,
-    "qv": 114,
-    "taxa_qv": 26.6,
-    "analisando": 74,
-    "pesquisa": 128,
-    "sem_interesse": 89,
-    "sem_registro": 23
+    "atend": 435,
+    "qv": 120,
+    "taxa_qv": 27.6,
+    "analisando": 82,
+    "pesquisa": 132,
+    "sem_interesse": 93,
+    "sem_registro": 8
   },
   "fechamento": {
-    "data_ref": "2026-06-19",
-    "data_fmt": "19/06/2026",
+    "data_ref": "2026-06-20",
+    "data_fmt": "20/06/2026",
     "linhas": [
+      {
+        "super": "Ricardo",
+        "equipe": "HOUSE",
+        "VE": 0,
+        "I": 1,
+        "R": 0,
+        "T": 0,
+        "total": 1,
+        "qv": 0
+      },
       {
         "super": "Nelma",
         "equipe": "HOUSE",
         "VE": 1,
         "I": 0,
-        "R": 1,
+        "R": 2,
+        "T": 0,
+        "total": 3,
+        "qv": 2
+      },
+      {
+        "super": "Berillo",
+        "equipe": "PARCERIAS",
+        "VE": 0,
+        "I": 2,
+        "R": 0,
         "T": 0,
         "total": 2,
-        "qv": 1
+        "qv": 0
       },
       {
         "super": "Up House",
         "equipe": "UP HOUSE",
-        "VE": 2,
+        "VE": 1,
         "I": 0,
         "R": 0,
         "T": 0,
-        "total": 2,
+        "total": 1,
         "qv": 0
       },
       {
@@ -38,49 +58,49 @@
         "equipe": "MEDI",
         "VE": 1,
         "I": 1,
-        "R": 0,
+        "R": 1,
         "T": 0,
-        "total": 2,
-        "qv": 0
+        "total": 3,
+        "qv": 2
       }
     ],
     "total": {
-      "VE": 4,
-      "I": 1,
-      "R": 1,
+      "VE": 3,
+      "I": 4,
+      "R": 3,
       "T": 0,
-      "total": 6,
-      "qv": 1
+      "total": 10,
+      "qv": 4
     }
   },
   "equipes": [
     {
       "nome": "HOUSE",
       "atend": 179,
-      "qv": 45,
-      "taxa_qv": 25.1,
+      "qv": 47,
+      "taxa_qv": 26.3,
       "ve_pct": 49.2
     },
     {
       "nome": "UP HOUSE",
-      "atend": 130,
-      "qv": 39,
-      "taxa_qv": 30,
-      "ve_pct": 56.9
+      "atend": 133,
+      "qv": 40,
+      "taxa_qv": 30.1,
+      "ve_pct": 56.4
     },
     {
       "nome": "MEDI",
-      "atend": 93,
-      "qv": 18,
-      "taxa_qv": 19.4,
-      "ve_pct": 62.4
+      "atend": 96,
+      "qv": 21,
+      "taxa_qv": 21.9,
+      "ve_pct": 61.5
     },
     {
       "nome": "PARCERIAS",
-      "atend": 26,
+      "atend": 27,
       "qv": 12,
-      "taxa_qv": 46.2,
-      "ve_pct": 3.8
+      "taxa_qv": 44.4,
+      "ve_pct": 3.7
     }
   ],
   "supers": [
@@ -128,23 +148,23 @@
     },
     {
       "nome": "Up House",
-      "atend": 133,
-      "qv": 40,
+      "atend": 136,
+      "qv": 41,
       "taxa_qv": 30.1,
       "I": {
-        "total": 42,
+        "total": 43,
         "qv": 19,
-        "pct": 45.2
+        "pct": 44.2
       },
       "VE": {
-        "total": 76,
+        "total": 77,
         "qv": 15,
-        "pct": 19.7
+        "pct": 19.5
       },
       "R": {
-        "total": 12,
-        "qv": 6,
-        "pct": 50
+        "total": 13,
+        "qv": 7,
+        "pct": 53.8
       }
     },
     {
@@ -170,13 +190,13 @@
     },
     {
       "nome": "Berillo",
-      "atend": 12,
+      "atend": 13,
       "qv": 3,
-      "taxa_qv": 25,
+      "taxa_qv": 23.1,
       "I": {
-        "total": 11,
+        "total": 12,
         "qv": 3,
-        "pct": 27.3
+        "pct": 25
       },
       "VE": {
         "total": 0,
@@ -192,8 +212,8 @@
     {
       "nome": "Nelma",
       "atend": 85,
-      "qv": 17,
-      "taxa_qv": 20,
+      "qv": 19,
+      "taxa_qv": 22.4,
       "I": {
         "total": 27,
         "qv": 6,
@@ -206,50 +226,50 @@
       },
       "R": {
         "total": 10,
-        "qv": 5,
-        "pct": 50
+        "qv": 7,
+        "pct": 70
       }
     },
     {
       "nome": "Medi",
-      "atend": 102,
-      "qv": 20,
-      "taxa_qv": 19.6,
+      "atend": 105,
+      "qv": 23,
+      "taxa_qv": 21.9,
       "I": {
-        "total": 27,
-        "qv": 9,
-        "pct": 33.3
+        "total": 29,
+        "qv": 11,
+        "pct": 37.9
       },
       "VE": {
-        "total": 66,
+        "total": 67,
         "qv": 10,
-        "pct": 15.2
+        "pct": 14.9
       },
       "R": {
         "total": 2,
-        "qv": 1,
-        "pct": 50
+        "qv": 2,
+        "pct": 100
       }
     }
   ],
   "tipos": [
     {
       "tipo": "I",
-      "total": 162,
-      "qv": 65,
-      "pct": 40.1
+      "total": 166,
+      "qv": 67,
+      "pct": 40.4
     },
     {
       "tipo": "VE",
-      "total": 221,
+      "total": 223,
       "qv": 33,
-      "pct": 14.9
+      "pct": 14.8
     },
     {
       "tipo": "R",
-      "total": 32,
-      "qv": 16,
-      "pct": 50
+      "total": 33,
+      "qv": 20,
+      "pct": 60.6
     }
   ],
   "semanal": [
@@ -297,18 +317,18 @@
     },
     {
       "semana": "2026-06-15",
-      "periodo": "15/06–20/06",
-      "atend": 56,
-      "qv": 6,
-      "pct": 10.7
+      "periodo": "15/06–21/06",
+      "atend": 63,
+      "qv": 12,
+      "pct": 19
     }
   ],
   "origem": [
     {
       "canal": "PAINEL LED",
-      "atend": 65,
+      "atend": 67,
       "qv": 6,
-      "taxa_qv": 9.2
+      "taxa_qv": 9
     },
     {
       "canal": "BIRUTA",
@@ -324,27 +344,27 @@
     },
     {
       "canal": "FOLHETO",
-      "atend": 46,
+      "atend": 47,
       "qv": 11,
-      "taxa_qv": 23.9
+      "taxa_qv": 23.4
     },
     {
       "canal": "WHATSAPP",
       "atend": 41,
-      "qv": 18,
-      "taxa_qv": 43.9
+      "qv": 19,
+      "taxa_qv": 46.3
     },
     {
       "canal": "INSTAGRAM",
-      "atend": 38,
-      "qv": 14,
-      "taxa_qv": 36.8
+      "atend": 39,
+      "qv": 15,
+      "taxa_qv": 38.5
     },
     {
       "canal": "CARTEIRA",
-      "atend": 33,
-      "qv": 16,
-      "taxa_qv": 48.5
+      "atend": 36,
+      "qv": 18,
+      "taxa_qv": 50
     },
     {
       "canal": "AÇÃO BRINDE",
@@ -355,8 +375,8 @@
     {
       "canal": "FACEBOOK",
       "atend": 13,
-      "qv": 4,
-      "taxa_qv": 30.8
+      "qv": 6,
+      "taxa_qv": 46.2
     },
     {
       "canal": "SITE CANOPUS",
@@ -439,14 +459,14 @@
   ],
   "pastas": {
     "sfh": {
-      "total": 39,
-      "aprov": 35,
+      "total": 40,
+      "aprov": 36,
       "pend": 4,
-      "pct_aprov": 89.7
+      "pct_aprov": 90
     },
     "assoc": {
       "total": 60,
-      "pend": 31,
+      "pend": 32,
       "sicaq": 28
     },
     "linhas": [
@@ -464,8 +484,8 @@
         "super": "JAMIL",
         "sfh_pend": 0,
         "sfh_aprov": 0,
-        "assoc_pend": 2,
-        "assoc_analise": 1,
+        "assoc_pend": 3,
+        "assoc_analise": 0,
         "assoc_sicaq": 3,
         "sfh_total": 0,
         "assoc_total": 6
@@ -523,11 +543,11 @@
       {
         "super": "UP HOUSE",
         "sfh_pend": 2,
-        "sfh_aprov": 6,
+        "sfh_aprov": 7,
         "assoc_pend": 6,
         "assoc_analise": 0,
         "assoc_sicaq": 11,
-        "sfh_total": 8,
+        "sfh_total": 9,
         "assoc_total": 17
       }
     ]

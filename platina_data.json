@@ -1,5 +1,5 @@
 {
-  "gerado_em": "26/06/2026 20:16",
+  "gerado_em": "26/06/2026 20:22",
   "totais": {
     "atend": 497,
     "qv": 145,
@@ -466,15 +466,15 @@
   ],
   "pastas": {
     "sfh": {
-      "total": 60,
-      "aprov": 50,
-      "pend": 10,
-      "pct_aprov": 83.3
+      "total": 62,
+      "aprov": 49,
+      "pend": 13,
+      "pct_aprov": 79
     },
     "assoc": {
-      "total": 65,
-      "pend": 33,
-      "sicaq": 31
+      "total": 68,
+      "pend": 37,
+      "sicaq": 29
     },
     "linhas": [
       {
@@ -501,61 +501,61 @@
         "super": "NELMA",
         "sfh_pend": 1,
         "sfh_aprov": 3,
-        "assoc_pend": 6,
-        "assoc_analise": 0,
+        "assoc_pend": 7,
+        "assoc_analise": 1,
         "assoc_sicaq": 7,
         "sfh_total": 4,
-        "assoc_total": 13
+        "assoc_total": 15
       },
       {
         "super": "RICARDO",
-        "sfh_pend": 5,
-        "sfh_aprov": 12,
-        "assoc_pend": 7,
+        "sfh_pend": 7,
+        "sfh_aprov": 10,
+        "assoc_pend": 8,
         "assoc_analise": 0,
-        "assoc_sicaq": 6,
+        "assoc_sicaq": 5,
         "sfh_total": 17,
         "assoc_total": 13
       },
       {
         "super": "BERILLO",
         "sfh_pend": 0,
-        "sfh_aprov": 6,
-        "assoc_pend": 6,
+        "sfh_aprov": 7,
+        "assoc_pend": 5,
         "assoc_analise": 0,
         "assoc_sicaq": 5,
-        "sfh_total": 6,
-        "assoc_total": 11
+        "sfh_total": 7,
+        "assoc_total": 10
       },
       {
         "super": "RODRIGO",
         "sfh_pend": 0,
         "sfh_aprov": 14,
-        "assoc_pend": 1,
-        "assoc_analise": 1,
+        "assoc_pend": 2,
+        "assoc_analise": 0,
         "assoc_sicaq": 0,
         "sfh_total": 14,
         "assoc_total": 2
       },
       {
         "super": "MEDI",
-        "sfh_pend": 0,
+        "sfh_pend": 1,
         "sfh_aprov": 7,
-        "assoc_pend": 5,
+        "assoc_pend": 6,
         "assoc_analise": 0,
         "assoc_sicaq": 1,
-        "sfh_total": 7,
-        "assoc_total": 6
+        "sfh_total": 8,
+        "assoc_total": 7
       },
       {
         "super": "UP HOUSE",
         "sfh_pend": 4,
         "sfh_aprov": 7,
-        "assoc_pend": 8,
-        "assoc_analise": 0,
-        "assoc_sicaq": 12,
+        "assoc_pend": 9,
+        "assoc_analise": 1,
+        "assoc_sicaq": 11,
         "sfh_total": 11,
-        "assoc_total": 20
+        "assoc_total": 21
       }
     ]
   }

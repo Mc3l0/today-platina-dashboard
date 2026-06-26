@@ -1,13 +1,13 @@
 {
-  "gerado_em": "26/06/2026 20:03",
+  "gerado_em": "26/06/2026 20:16",
   "totais": {
-    "atend": 496,
+    "atend": 497,
     "qv": 145,
     "taxa_qv": 29.2,
     "analisando": 86,
     "pesquisa": 135,
     "sem_interesse": 104,
-    "sem_registro": 26
+    "sem_registro": 27
   },
   "fechamento": {
     "data_ref": "2026-06-26",
@@ -76,10 +76,10 @@
   "equipes": [
     {
       "nome": "HOUSE",
-      "atend": 200,
+      "atend": 201,
       "qv": 54,
-      "taxa_qv": 27,
-      "ve_pct": 47.5
+      "taxa_qv": 26.9,
+      "ve_pct": 47.3
     },
     {
       "nome": "UP HOUSE",
@@ -232,13 +232,13 @@
     },
     {
       "nome": "Medi",
-      "atend": 115,
+      "atend": 116,
       "qv": 26,
-      "taxa_qv": 22.6,
+      "taxa_qv": 22.4,
       "I": {
-        "total": 30,
+        "total": 31,
         "qv": 12,
-        "pct": 40
+        "pct": 38.7
       },
       "VE": {
         "total": 73,
@@ -255,9 +255,9 @@
   "tipos": [
     {
       "tipo": "I",
-      "total": 180,
+      "total": 181,
       "qv": 73,
-      "pct": 40.6
+      "pct": 40.3
     },
     {
       "tipo": "VE",
@@ -325,9 +325,9 @@
     {
       "semana": "2026-06-22",
       "periodo": "22/06–26/06",
-      "atend": 61,
+      "atend": 62,
       "qv": 25,
-      "pct": 41
+      "pct": 40.3
     }
   ],
   "origem": [
@@ -363,9 +363,9 @@
     },
     {
       "canal": "CARTEIRA",
-      "atend": 47,
+      "atend": 48,
       "qv": 25,
-      "taxa_qv": 53.2
+      "taxa_qv": 52.1
     },
     {
       "canal": "WHATSAPP",

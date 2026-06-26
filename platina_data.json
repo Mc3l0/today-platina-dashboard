@@ -1,5 +1,5 @@
 {
-  "gerado_em": "26/06/2026 12:55",
+  "gerado_em": "26/06/2026 15:05",
   "totais": {
     "atend": 480,
     "qv": 145,
@@ -476,15 +476,15 @@
   ],
   "pastas": {
     "sfh": {
-      "total": 59,
-      "aprov": 49,
+      "total": 60,
+      "aprov": 50,
       "pend": 10,
-      "pct_aprov": 83.1
+      "pct_aprov": 83.3
     },
     "assoc": {
-      "total": 62,
-      "pend": 32,
-      "sicaq": 28
+      "total": 65,
+      "pend": 33,
+      "sicaq": 31
     },
     "linhas": [
       {
@@ -510,12 +510,12 @@
       {
         "super": "NELMA",
         "sfh_pend": 1,
-        "sfh_aprov": 2,
+        "sfh_aprov": 3,
         "assoc_pend": 6,
-        "assoc_analise": 1,
+        "assoc_analise": 0,
         "assoc_sicaq": 7,
-        "sfh_total": 3,
-        "assoc_total": 14
+        "sfh_total": 4,
+        "assoc_total": 13
       },
       {
         "super": "RICARDO",
@@ -533,18 +533,18 @@
         "sfh_aprov": 6,
         "assoc_pend": 6,
         "assoc_analise": 0,
-        "assoc_sicaq": 3,
+        "assoc_sicaq": 5,
         "sfh_total": 6,
-        "assoc_total": 9
+        "assoc_total": 11
       },
       {
         "super": "RODRIGO",
         "sfh_pend": 0,
-        "sfh_aprov": 13,
+        "sfh_aprov": 14,
         "assoc_pend": 1,
         "assoc_analise": 1,
         "assoc_sicaq": 0,
-        "sfh_total": 13,
+        "sfh_total": 14,
         "assoc_total": 2
       },
       {
@@ -560,12 +560,12 @@
       {
         "super": "UP HOUSE",
         "sfh_pend": 4,
-        "sfh_aprov": 8,
-        "assoc_pend": 7,
+        "sfh_aprov": 7,
+        "assoc_pend": 8,
         "assoc_analise": 0,
-        "assoc_sicaq": 11,
-        "sfh_total": 12,
-        "assoc_total": 18
+        "assoc_sicaq": 12,
+        "sfh_total": 11,
+        "assoc_total": 20
       }
     ]
   }

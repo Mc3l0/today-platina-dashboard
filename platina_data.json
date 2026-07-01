@@ -1,13 +1,13 @@
 {
-  "gerado_em": "01/07/2026 10:35",
+  "gerado_em": "01/07/2026 10:54",
   "totais": {
     "atend": 553,
     "qv": 168,
     "taxa_qv": 30.4,
     "analisando": 103,
-    "pesquisa": 142,
+    "pesquisa": 144,
     "sem_interesse": 126,
-    "sem_registro": 14
+    "sem_registro": 12
   },
   "fechamento": {
     "data_ref": "2026-06-30",

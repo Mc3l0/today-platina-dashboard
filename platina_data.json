@@ -1,5 +1,5 @@
 {
-  "gerado_em": "01/07/2026 10:54",
+  "gerado_em": "01/07/2026 13:28",
   "totais": {
     "atend": 553,
     "qv": 168,
@@ -137,27 +137,6 @@
       }
     },
     {
-      "nome": "Jamil",
-      "atend": 13,
-      "qv": 5,
-      "taxa_qv": 38.5,
-      "I": {
-        "total": 7,
-        "qv": 4,
-        "pct": 57.1
-      },
-      "VE": {
-        "total": 3,
-        "qv": 0,
-        "pct": 0
-      },
-      "R": {
-        "total": 3,
-        "qv": 1,
-        "pct": 33.3
-      }
-    },
-    {
       "nome": "Up House",
       "atend": 177,
       "qv": 58,
@@ -201,23 +180,23 @@
     },
     {
       "nome": "Nelma",
-      "atend": 107,
-      "qv": 28,
-      "taxa_qv": 26.2,
+      "atend": 120,
+      "qv": 33,
+      "taxa_qv": 27.5,
       "I": {
-        "total": 35,
-        "qv": 8,
-        "pct": 22.9
+        "total": 42,
+        "qv": 12,
+        "pct": 28.6
       },
       "VE": {
-        "total": 53,
+        "total": 56,
         "qv": 6,
-        "pct": 11.3
+        "pct": 10.7
       },
       "R": {
-        "total": 17,
-        "qv": 14,
-        "pct": 82.4
+        "total": 20,
+        "qv": 15,
+        "pct": 75
       }
     },
     {
@@ -482,16 +461,6 @@
         "assoc_analise": 0,
         "assoc_sicaq": 0,
         "sfh_total": 1,
-        "assoc_total": 0
-      },
-      {
-        "super": "JAMIL",
-        "sfh_pend": 0,
-        "sfh_aprov": 0,
-        "assoc_pend": 0,
-        "assoc_analise": 0,
-        "assoc_sicaq": 0,
-        "sfh_total": 0,
         "assoc_total": 0
       },
       {
